@@ -7,23 +7,28 @@ import { competitorLocations, getCompetitorsInArea, calculateDistance } from './
 // Cache para datos generados
 const mockDataCache = new Map();
 
-// Generador de números pseudoaleatorios determinista
-function seededRandom(seed) {
-  const x = Math.sin(seed) * 10000;
-  return x - Math.floor(x);
+import { spainPostalCodes } from './spainData';
+
+export function getNearestPostalCodeData(lat, lng) {
+  let nearestData = null;
+  let minDistance = Infinity;
+  Object.values(spainPostalCodes).forEach(data => {
+    // Estimación rápida de distancia euclidiana para proximidad sin sobrecargar la CPU
+    const dist = Math.pow(data.lat - lat, 2) + Math.pow(data.lng - lng, 2);
+    if(dist < minDistance) {
+      minDistance = dist;
+      nearestData = data;
+    }
+  });
+  return nearestData;
 }
 
-// Generar porcentaje de población mayor de 65 años
-// Las zonas rurales tienen mayor porcentaje de población mayor
-export function generateElderlyPercentage(lat, lng, basePopulation) {
-  // Semilla basada en coordenadas
-  const seed = Math.abs(lat * 1000 + lng * 1000);
-  const ruralFactor = basePopulation < 10000 ? 0.25 : 
-                     basePopulation < 50000 ? 0.18 : 
-                     basePopulation < 200000 ? 0.14 : 0.12;
-  
-  const basePercentage = 0.12 + ruralFactor + seededRandom(seed) * 0.08;
-  return Math.min(0.35, Math.max(0.08, basePercentage));
+export function getRealElderlyPercentage(lat, lng) {
+  const data = getNearestPostalCodeData(lat, lng);
+  if(data && data.porcentaje_mayores_65 !== undefined) {
+    return data.porcentaje_mayores_65;
+  }
+  return 0.18; // Media nacional como fallback extremo
 }
 
 // Generar competidores específicos usando datos reales
@@ -63,20 +68,12 @@ export function generateCompetitors(lat, lng, population) {
 
 // Calcular población objetivo (mayor de 65 años) en área de influencia
 export function calculateTargetPopulation(lat, lng, radiusKm = 1) {
-  const seed = Math.abs(lat * 1000 + lng * 1000) + 3;
-  
-  // Densidad poblacional promedio en España: ~93 hab/km²
-  // En zonas urbanas puede llegar a 10,000+ hab/km²
-  const baseDensity = 5000 + seededRandom(seed) * 10000;
-  
-  // Área del círculo en km²
+  const data = getNearestPostalCodeData(lat, lng);
+  const baseDensity = data ? Math.max(500, data.poblacion / 2) : 5000;
   const areaKm2 = Math.PI * radiusKm * radiusKm;
-  
-  // Población total en el área
   const totalPopulation = Math.floor(baseDensity * areaKm2);
   
-  // Porcentaje de mayores de 65
-  const elderlyPercentage = generateElderlyPercentage(lat, lng, totalPopulation);
+  const elderlyPercentage = getRealElderlyPercentage(lat, lng);
   const targetPopulation = Math.floor(totalPopulation * elderlyPercentage);
   
   return {
@@ -95,9 +92,8 @@ export function generateLocationAnalysis(lat, lng, locationName = 'Ubicación se
     return mockDataCache.get(cacheKey);
   }
   
-  // Estimar población basada en coordenadas (simulado)
-  const seed = Math.abs(lat * 1000 + lng * 1000);
-  const population = 10000 + seededRandom(seed) * 500000;
+  const data = getNearestPostalCodeData(lat, lng);
+  const population = data ? data.poblacion : 10000;
   
   // Generar competidores usando datos reales
   const competitors = generateCompetitors(lat, lng, population);
