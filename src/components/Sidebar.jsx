@@ -12,13 +12,16 @@ import {
   ChevronRight,
   RefreshCw,
   Database,
-  Globe
+  Globe,
+  BarChart2
 } from 'lucide-react';
 import SearchBox from './SearchBox';
 import ScorePanel from './ScorePanel';
 import MetricsPanel from './MetricsPanel';
 import LayerControls from './LayerControls';
 import ExportButton from './ExportButton';
+import CompetitorIntelligencePanel from './CompetitorIntelligencePanel';
+import StrategicInsightsPanel from './StrategicInsightsPanel';
 import { logos } from '../utils/logoMapping';
 
 const Sidebar = ({ 
@@ -132,26 +135,44 @@ const Sidebar = ({
         <div className="flex border-b border-slate-200">
           <button
             onClick={() => setActiveTab('analysis')}
-            className={`flex-1 py-3 text-sm font-medium transition-colors ${
+            className={`flex-1 py-2 text-xs font-medium transition-colors ${
               activeTab === 'analysis' 
                 ? 'text-primary-600 border-b-2 border-primary-600 bg-primary-50' 
                 : 'text-slate-500 hover:text-slate-700'
             }`}
           >
-            <TrendingUp size={16} className="inline mr-1" />
+            <TrendingUp size={13} className="inline mr-1" />
             Análisis
           </button>
           <button
+            onClick={() => setActiveTab('competition')}
+            className={`flex-1 py-2 text-xs font-medium transition-colors ${
+              activeTab === 'competition' 
+                ? 'text-indigo-600 border-b-2 border-indigo-600 bg-indigo-50' 
+                : 'text-slate-500 hover:text-slate-700'
+            }`}
+          >
+            <BarChart2 size={13} className="inline mr-1" />
+            Competencia
+          </button>
+          <button
             onClick={() => setActiveTab('locations')}
-            className={`flex-1 py-3 text-sm font-medium transition-colors ${
+            className={`flex-1 py-2 text-xs font-medium transition-colors ${
               activeTab === 'locations' 
                 ? 'text-primary-600 border-b-2 border-primary-600 bg-primary-50' 
                 : 'text-slate-500 hover:text-slate-700'
             }`}
           >
-            <MapPin size={16} className="inline mr-1" />
+            <MapPin size={13} className="inline mr-1" />
             Centros
           </button>
+        </div>
+      )}
+
+      {/* Panel de Inteligencia Competitiva */}
+      {!isCollapsed && activeTab === 'competition' && (
+        <div className="flex-1 overflow-hidden flex flex-col">
+          <CompetitorIntelligencePanel selectedLocation={selectedLocation} />
         </div>
       )}
 
@@ -170,6 +191,9 @@ const Sidebar = ({
             viabilityData={viabilityData}
             selectedLocation={selectedLocation}
           />
+
+          {/* Insights Estratégicos */}
+          <StrategicInsightsPanel selectedLocation={selectedLocation} />
 
           {/* Controles de Capas */}
           <LayerControls 
