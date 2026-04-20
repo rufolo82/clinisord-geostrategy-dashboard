@@ -4,14 +4,16 @@
 import { generateLocationAnalysis } from './mockData';
 import { calculateDistance } from './competitorData';
 import { getClinisordLocations, spainPostalCodes } from './spainData';
+import { calculateStrategicOpportunityScore } from './competitorIntelligence';
 
 // Pesos para cada factor (pueden ajustarse)
 const WEIGHTS = {
-  demographic: 0.40,    // Peso de la demografía (población objetivo)
-  competition: 0.30,    // Peso del análisis de competencia
-  cannibalization: 0.20, // Peso del riesgo de canibalización
-  accessibility: 0.10    // Peso de la accesibilidad
-};
+        demographic: 0.35,
+    competition: 0.25,
+    cannibalization: 0.15,
+    accessibility: 0.10,
+    strategic: 0.15
+      
 
 // Factores de corrección por región
 const REGIONAL_FACTORS = {
@@ -151,18 +153,20 @@ export function calculateViabilityScore(lat, lng, locationName = 'Ubicación') {
   const demographicScore = calculateDemographicScore(analysis);
   const competitionScore = calculateCompetitionScore(analysis);
   const cannibalizationScore = calculateCannibalizationScore(analysis);
-  const accessibilityScore = calculateAccessibilityScore(lat, lng);
+  const accessibilityScore = calculateAccessibilityScore(lat, lng)
+      const strategicScore = calculateStrategicOpportunityScore(lat, lng);;
   
   // Calcular puntuación total
   const totalScore = (
     demographicScore * WEIGHTS.demographic +
     competitionScore * WEIGHTS.competition +
-    cannibalizationScore * WEIGHTS.cannibalization +
+    cannibalizationScore * WEIGHTS.canni +
+        strategicScore * WEIGHTS.strategicbalization +
     accessibilityScore * WEIGHTS.accessibility
-  );
-  
-  // Determinar categoría y recomendación
-  const result = categorizeViability(totalScore);
+      cannibalizationScore * WEIGHTS.cannibalization +
+        strategicScore * WEIGHTS.strategic +
+        accessibilityScore * WEIGHTS.accessibility
+    const result = categorizeViability(totalScore);
   
   return {
     score: Math.round(totalScore),
@@ -170,7 +174,8 @@ export function calculateViabilityScore(lat, lng, locationName = 'Ubicación') {
       demographic: Math.round(demographicScore),
       competition: Math.round(competitionScore),
       cannibalization: Math.round(cannibalizationScore),
-      accessibility: Math.round(accessibilityScore)
+      accessibility: Math.round(accessibilityScore),
+            strategic: Math.round(strategicScore)
     },
     category: result.category,
     recommendation: result.recommendation,
