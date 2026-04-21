@@ -17,23 +17,58 @@ const DataSourcesMenu = ({ isOpen, onClose }) => {
       ]
     },
     competencia: {
-      titulo: 'Competencia',
-      fuente: 'Base de datos propia de Clinisord',
-      metodologia: 'Geolocalización de centros auditivos competidores mediante búsqueda directa y directorios especializados.',
+      titulo: 'Localización de Competidores',
+      fuente: 'OpenStreetMap / Overpass API',
+      url: 'https://overpass-api.de/',
+      metodologia: 'Consulta en tiempo real a la base de datos colaborativa de OpenStreetMap. Se filtran establecimientos de tipo healthcare:audiology, shop:hearing_aids y optician en toda España.',
       campos: [
-        { nombre: 'Número de competidores', descripcion: 'Centros auditivos en un radio de 500m' },
-        { nombre: 'Tipo de competencia', descripción: 'Cadenas especializadas vs. ópticas' }
+        { nombre: 'Número de competidores', descripcion: 'Centros auditivos en un radio configurable' },
+        { nombre: 'Tipo de establecimiento', descripcion: 'Clínica especializada, óptica, farmacia o independiente' },
+        { nombre: 'Coordenadas geográficas', descripcion: 'Posición exacta para cálculo de distancias y mapas' },
+        { nombre: 'Nombre del establecimiento', descripcion: 'Nombre oficial según OpenStreetMap' }
+      ]
+    },
+    inteligenciaCompetitiva: {
+      titulo: 'Inteligencia Competitiva',
+      fuente: 'Datos Curados Clinisord + Análisis de Mercado',
+      metodologia: 'Perfiles detallados de 7 cadenas competidoras elaborados mediante observación directa, análisis de precios publicados en webs oficiales, y revisión de reseñas en Google Maps. Actualización manual trimestral.',
+      subcategorias: [
+        {
+          nombre: 'Perfiles de Cadenas',
+          fuente: 'Elaboración propia',
+          descripcion: 'Fichas completas de GAES (Amplifon), Audical, Alain Afflelou Acoustics, Specsavers, El Corte Inglés, Independientes y Farmacias. Incluyen servicios, precios estimados, puntos fuertes/débiles y valoraciones Google Maps.',
+          actualizacion: 'Abril 2026'
+        },
+        {
+          nombre: 'Cuota de Mercado',
+          fuente: 'Estimación basada en dato de centros OSM + cuota nacional declarada',
+          descripcion: 'Cálculo proporcional al número de centros de cada cadena dentro del radio analizado, ajustado por cuota de mercado nacional estimada.',
+          actualizacion: 'En tiempo real (según datos OSM)'
+        },
+        {
+          nombre: 'Vulnerabilidades y Oportunidades',
+          fuente: 'Modelo de análisis Clinisord',
+          descripcion: 'Detección automática de competidores con rating bajo, zonas sin teleaudiología, mercados atomizados en independientes, o áreas sin servicio social integrado.',
+          actualizacion: 'Calculado dinámicamente por ubicación'
+        },
+        {
+          nombre: 'Ratings y Valoraciones',
+          fuente: 'Google Maps (observación manual 2024)',
+          descripcion: 'Rangos de valoraciones observados en centros de Madrid y Barcelona. No son datos en tiempo real. Para valoraciones actualizadas se requiere Google Maps Places API.',
+          actualizacion: 'Diciembre 2024'
+        }
       ]
     },
     algoritmo: {
       titulo: 'Algoritmo de Viabilidad',
       fuente: 'Desarrollo interno Clinisord',
-      metodologia: 'Modelo predictivo basado en ponderación de factores demográficos y de mercado.',
+      metodologia: 'Modelo predictivo de 5 factores ponderados que calcula un score de viabilidad de 0–100 para cualquier ubicación en España.',
       campos: [
-        { nombre: 'Score de viabilidad', descripcion: 'Puntuación de 0-100 basada en múltiples factores' },
-        { nombre: 'Factor demográfico', descripcion: 'Población total y densidad' },
-        { nombre: 'Factor de envejecimiento', descripcion: 'Población mayor de 65 años' },
-        { nombre: 'Factor competitivo', descripcion: 'Densidad de competidores' }
+        { nombre: 'Factor demográfico (35%)', descripcion: 'Puntuación basada en población total, densidad y porcentaje de mayores de 65 años' },
+        { nombre: 'Factor competitivo (25%)', descripcion: 'Inverso de la saturación de competidores en radio de 1-3km' },
+        { nombre: 'Factor de canibalización (15%)', descripcion: 'Penalización por proximidad a otros centros Clinisord propios' },
+        { nombre: 'Factor de accesibilidad (10%)', descripcion: 'Puntuación basada en transporte público y accesibilidad de la zona' },
+        { nombre: 'Factor oportunidad estratégica (15%)', descripcion: 'Score de oportunidad basado en vulnerabilidades de competidores, vacíos de teleaudiología y servicio social detectados en el área' }
       ]
     }
   };
@@ -66,6 +101,7 @@ const DataSourcesMenu = ({ isOpen, onClose }) => {
         
         {/* Contenido scrollable */}
         <div className="p-6 overflow-y-auto max-h-[calc(80vh-80px)] space-y-6">
+          
           {/* Demografía */}
           <div className="border rounded-xl p-4 hover:shadow-md transition-shadow">
             <div className="flex items-start gap-3 mb-3">
@@ -81,7 +117,7 @@ const DataSourcesMenu = ({ isOpen, onClose }) => {
             </div>
             <div className="pl-12 space-y-2">
               <p className="text-sm text-slate-600"><strong>Metodología:</strong> {sources.demografia.metodologia}</p>
-              <p className="text-sm text-slate-600"><strong>Última actualización:</strong> Enero 2024</p>
+              <p className="text-sm text-slate-500 mt-2"><strong>Última actualización:</strong> Enero 2024</p>
               <p className="text-sm text-slate-500 mt-2"><strong>Campos disponibles:</strong></p>
               <ul className="text-sm text-slate-600 space-y-1">
                 {sources.demografia.campos.map((campo, idx) => (
@@ -93,8 +129,8 @@ const DataSourcesMenu = ({ isOpen, onClose }) => {
               </ul>
             </div>
           </div>
-          
-          {/* Competencia */}
+
+          {/* Localización de Competidores (OSM) */}
           <div className="border rounded-xl p-4 hover:shadow-md transition-shadow">
             <div className="flex items-start gap-3 mb-3">
               <div className="p-2 bg-green-100 rounded-lg">
@@ -102,14 +138,22 @@ const DataSourcesMenu = ({ isOpen, onClose }) => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                 </svg>
               </div>
-              <div>
+              <div className="flex-1">
                 <h3 className="font-semibold text-slate-800">{sources.competencia.titulo}</h3>
                 <p className="text-sm text-slate-500">{sources.competencia.fuente}</p>
               </div>
+              <a
+                href={sources.competencia.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs text-green-600 hover:underline"
+              >
+                overpass-api.de ↗
+              </a>
             </div>
             <div className="pl-12 space-y-2">
               <p className="text-sm text-slate-600"><strong>Metodología:</strong> {sources.competencia.metodologia}</p>
-              <p className="text-sm text-slate-500 mt-2"><strong>Campos disponibles:</strong></p>
+              <p className="text-sm text-slate-500 mt-2"><strong>Datos obtenibles:</strong></p>
               <ul className="text-sm text-slate-600 space-y-1">
                 {sources.competencia.campos.map((campo, idx) => (
                   <li key={idx} className="flex items-start gap-2">
@@ -120,7 +164,45 @@ const DataSourcesMenu = ({ isOpen, onClose }) => {
               </ul>
             </div>
           </div>
-          
+
+          {/* Inteligencia Competitiva */}
+          <div className="border border-sky-200 bg-sky-50/40 rounded-xl p-4 hover:shadow-md transition-shadow">
+            <div className="flex items-start gap-3 mb-3">
+              <div className="p-2 bg-sky-100 rounded-lg">
+                <svg className="w-5 h-5 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+              </div>
+              <div>
+                <div className="flex items-center gap-2">
+                  <h3 className="font-semibold text-slate-800">{sources.inteligenciaCompetitiva.titulo}</h3>
+                  <span className="text-xs bg-sky-500 text-white px-2 py-0.5 rounded-full font-medium">Nuevo</span>
+                </div>
+                <p className="text-sm text-slate-500">{sources.inteligenciaCompetitiva.fuente}</p>
+              </div>
+            </div>
+            <div className="pl-12 space-y-3">
+              <p className="text-sm text-slate-600"><strong>Metodología:</strong> {sources.inteligenciaCompetitiva.metodologia}</p>
+              <div className="space-y-3 mt-2">
+                {sources.inteligenciaCompetitiva.subcategorias.map((sub, idx) => (
+                  <div key={idx} className="bg-white rounded-lg border border-sky-100 p-3">
+                    <div className="flex items-center justify-between mb-1">
+                      <p className="text-sm font-semibold text-slate-700">📊 {sub.nombre}</p>
+                      <span className="text-xs text-slate-400">Act.: {sub.actualizacion}</span>
+                    </div>
+                    <p className="text-xs text-slate-500 mb-1"><em>Fuente:</em> {sub.fuente}</p>
+                    <p className="text-sm text-slate-600">{sub.descripcion}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="bg-amber-50 border border-amber-200 rounded-lg p-3 mt-2">
+                <p className="text-xs text-amber-800">
+                  <strong>⚠️ Google Maps Places API (opcional):</strong> Para obtener ratings actualizados y en tiempo real de los competidores, se requiere una clave de API de Google Maps Places. Sin ella, se usan los rangos curados de Abril 2026.
+                </p>
+              </div>
+            </div>
+          </div>
+
           {/* Algoritmo */}
           <div className="border rounded-xl p-4 hover:shadow-md transition-shadow">
             <div className="flex items-start gap-3 mb-3">
@@ -136,7 +218,7 @@ const DataSourcesMenu = ({ isOpen, onClose }) => {
             </div>
             <div className="pl-12 space-y-2">
               <p className="text-sm text-slate-600"><strong>Metodología:</strong> {sources.algoritmo.metodologia}</p>
-              <p className="text-sm text-slate-500 mt-2"><strong>Factores de cálculo:</strong></p>
+              <p className="text-sm text-slate-500 mt-2"><strong>Factores de cálculo (5 factores):</strong></p>
               <ul className="text-sm text-slate-600 space-y-1">
                 {sources.algoritmo.campos.map((campo, idx) => (
                   <li key={idx} className="flex items-start gap-2">
@@ -147,7 +229,7 @@ const DataSourcesMenu = ({ isOpen, onClose }) => {
               </ul>
             </div>
           </div>
-          
+
           {/* Nota legal */}
           <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
             <p className="text-sm text-amber-800">
