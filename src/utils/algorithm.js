@@ -211,7 +211,7 @@ export function categorizeViability(score) {
   } else {
     return {
       category: 'ALTO RIESGO',
-      recommendation: 'No recomendada. La zona presenta condiciones desfavorables para un nuevo centro.',
+      recommendation: 'No recomendada. Lla zona presenta condiciones desfavorables para un nuevo centro.',
       color: '#ef4444', // Red 500
       icon: 'x-circle'
     };
@@ -310,7 +310,7 @@ export function generateViabilityReport(lat, lng, locationName) {
     },
     captures: {
       monthlyExpected: captures.expected,
-      monthlyRange: \`${captures.conservative} - ${captures.optimistic}\`,
+      monthlyRange: `${captures.conservative} - ${captures.optimistic}`,
       annualProjection: captures.expected * 12
     },
     influence: {
