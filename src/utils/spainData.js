@@ -195,7 +195,8 @@ export const clinisordLocations = [
     lat: 40.4046, 
     lng: -3.7037, 
     direccion: 'Paseo de las Acacias, 4, 28005 Madrid',
-    telefono: '91 506 18 79'
+    telefono: '91 506 18 79',
+    ciudad: 'madrid'
   },
   { 
     id: 2, 
@@ -203,16 +204,18 @@ export const clinisordLocations = [
     lat: 40.4239, 
     lng: -3.6771, 
     direccion: 'Avda. Felipe II, 6, bajo izq., 28009 Madrid',
-    telefono: '91 426 35 35'
+    telefono: '91 426 35 35',
+    ciudad: 'madrid'
   },
-  // MORA DAHONDA - 1 centro
+  // MAJADAHONDA - 1 centro (área metropolitana de Madrid)
   { 
     id: 3, 
     nombre: 'Clinisord Majadahonda', 
     lat: 40.4675, 
     lng: -3.8712, 
     direccion: 'Calle Doctor Calero, 38, 28220 Majadahonda',
-    telefono: '91 639 71 55'
+    telefono: '91 639 71 55',
+    ciudad: 'madrid'
   },
   // BARCELONA - 3 centros
   { 
@@ -221,7 +224,8 @@ export const clinisordLocations = [
     lat: 41.3977, 
     lng: 2.1358, 
     direccion: 'Via Augusta, 166, 1º-2º, 08006 Barcelona',
-    telefono: '93 240 53 18'
+    telefono: '93 240 53 18',
+    ciudad: 'barcelona'
   },
   { 
     id: 6, 
@@ -229,7 +233,8 @@ export const clinisordLocations = [
     lat: 41.3888, 
     lng: 2.1590, 
     direccion: 'Calle Mallorca, 172, 08036 Barcelona',
-    telefono: '93 452 09 28'
+    telefono: '93 452 09 28',
+    ciudad: 'barcelona'
   },
   { 
     id: 7, 
@@ -237,7 +242,8 @@ export const clinisordLocations = [
     lat: 41.3807, 
     lng: 2.1422, 
     direccion: 'Calle Numancia, 45, 08029 Barcelona',
-    telefono: '91 171 63 97'
+    telefono: '91 171 63 97',
+    ciudad: 'barcelona'
   },
 ];
 

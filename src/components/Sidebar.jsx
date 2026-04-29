@@ -50,7 +50,7 @@ const Sidebar = ({
   ];
 
   const filteredClinisordLocations = clinisordLocations.filter(loc => 
-    loc.direccion.toLowerCase().includes(selectedCity.toLowerCase())
+    loc.ciudad === selectedCity
   );
 
   const handleCityChange = (cityId) => {
