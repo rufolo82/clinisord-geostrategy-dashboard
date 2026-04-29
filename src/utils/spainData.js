@@ -4,6 +4,8 @@
 
 import { spainPostalCodes } from './spainPostalCodes.js';
 
+export { spainPostalCodes };
+
 export const dataSourceInfo = {
   nombre: 'Censo Anual de Población',
   fuente: 'Instituto Nacional de Estadística (INE)',

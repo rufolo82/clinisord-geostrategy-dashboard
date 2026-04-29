@@ -7,7 +7,7 @@ import { competitorLocations, getCompetitorsInArea, calculateDistance } from './
 // Cache para datos generados
 const mockDataCache = new Map();
 
-import { spainPostalCodes } from './spainData';
+import { spainPostalCodes } from './spainPostalCodes';
 
 export function getNearestPostalCodeData(lat, lng) {
   let nearestData = null;
