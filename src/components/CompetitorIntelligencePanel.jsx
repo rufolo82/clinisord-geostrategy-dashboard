@@ -3,7 +3,7 @@ import {
   BarChart2, ShieldAlert, Target, DollarSign, TrendingUp,
   ChevronDown, ChevronUp, CheckCircle2, XCircle, AlertCircle,
   Zap, Users, Star, ArrowRight, Info, Briefcase, MessageSquare,
-  ThumbsUp, ThumbsDown, Activity, Building2, Euro
+  ThumbsUp, ThumbsDown, Activity, Building2, Euro, Maximize2, Minimize2
 } from 'lucide-react';
 import {
   getAllCompetitorProfiles,
@@ -718,16 +718,26 @@ function PreciosPanel() {
 // -------------------------------------------------------
 const CompetitorIntelligencePanel = ({ selectedLocation }) => {
   const [activeSubTab, setActiveSubTab] = useState('cuota');
+  const [isFullScreen, setIsFullScreen] = useState(false);
 
-  return (
-    <div className="flex flex-col h-full">
+  const content = (
+    <>
       {/* Header */}
-      <div className="px-4 pt-4 pb-0">
-        <div className="flex items-center gap-2 mb-1">
-          <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
-            <BarChart2 size={14} className="text-white" />
+      <div className="px-4 pt-4 pb-0 flex-shrink-0">
+        <div className="flex items-center justify-between mb-1">
+          <div className="flex items-center gap-2">
+            <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+              <BarChart2 size={14} className="text-white" />
+            </div>
+            <h3 className="text-sm font-bold text-slate-800">Inteligencia Competitiva</h3>
           </div>
-          <h3 className="text-sm font-bold text-slate-800">Inteligencia Competitiva</h3>
+          <button 
+            onClick={() => setIsFullScreen(!isFullScreen)}
+            className="p-1.5 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-md transition-colors"
+            title={isFullScreen ? "Salir de pantalla completa" : "Pantalla completa"}
+          >
+            {isFullScreen ? <Minimize2 size={16} /> : <Maximize2 size={16} />}
+          </button>
         </div>
         <p className="text-xs text-slate-500 mb-3">Análisis estratégico del mercado auditivo español</p>
 
@@ -751,12 +761,30 @@ const CompetitorIntelligencePanel = ({ selectedLocation }) => {
       </div>
 
       {/* Content */}
-      <div className="flex-1 overflow-y-auto">
-        {activeSubTab === 'cuota' && <CuotaPanel selectedLocation={selectedLocation} />}
-        {activeSubTab === 'fichas' && <FichasPanel />}
-        {activeSubTab === 'vulnerabilidades' && <VulnerabilidadesPanel selectedLocation={selectedLocation} />}
-        {activeSubTab === 'precios' && <PreciosPanel />}
+      <div className={`flex-1 overflow-y-auto ${isFullScreen ? 'bg-slate-50 p-4 md:p-8 rounded-b-xl' : ''}`}>
+        <div className={isFullScreen ? "max-w-4xl mx-auto bg-white rounded-xl shadow-sm border border-slate-200" : ""}>
+          {activeSubTab === 'cuota' && <CuotaPanel selectedLocation={selectedLocation} />}
+          {activeSubTab === 'fichas' && <FichasPanel />}
+          {activeSubTab === 'vulnerabilidades' && <VulnerabilidadesPanel selectedLocation={selectedLocation} />}
+          {activeSubTab === 'precios' && <PreciosPanel />}
+        </div>
       </div>
+    </>
+  );
+
+  if (isFullScreen) {
+    return (
+      <div className="fixed inset-0 z-[100] bg-slate-900/40 backdrop-blur-sm flex items-center justify-center p-4 md:p-8 animate-in fade-in duration-200">
+        <div className="bg-white w-full h-full max-w-6xl rounded-2xl shadow-2xl flex flex-col overflow-hidden animate-in zoom-in-95 duration-200">
+          {content}
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex flex-col h-full">
+      {content}
     </div>
   );
 };
