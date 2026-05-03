@@ -180,7 +180,7 @@ const Dashboard = () => {
         if (city === 'madrid') {
           return compLat >= 40.3 && compLat <= 40.55 && compLng >= -3.9 && compLng <= -3.5;
         } else if (city === 'barcelona') {
-          return compLat >= 41.3 && compLat <= 41.5 && compLng >= 2.0 && compLng <= 2.3;
+          return compLat >= 41.25 && compLat <= 41.65 && compLng >= 1.9 && compLng <= 2.3;
         } else if (city === 'valencia') {
           return compLat >= 39.4 && compLat <= 39.5 && compLng >= -0.4 && compLng <= -0.3;
         } else if (city === 'sevilla') {

@@ -13,7 +13,8 @@ import {
   identifyVulnerableCompetitors,
   getDAFOAnalysis,
 } from '../utils/competitorIntelligence';
-import { getCompetitorsInArea } from '../utils/competitorData';
+import { getCompetitorsInArea, calculateDistance } from '../utils/competitorData';
+import { clinisordLocations } from '../utils/spainData';
 
 // -------------------------------------------------------
 // Utilidades visuales
@@ -98,7 +99,13 @@ function CuotaPanel({ selectedLocation }) {
     return getCompetitorsInArea(selectedLocation.lat, selectedLocation.lng, 5);
   }, [selectedLocation]);
 
-  const marketShare = useMemo(() => calculateMarketShare(competitors), [competitors]);
+  const clinisordCount = useMemo(() => {
+    if (!selectedLocation) return 1;
+    const inArea = clinisordLocations.filter(c => calculateDistance(selectedLocation.lat, selectedLocation.lng, c.lat, c.lng) <= 10).length;
+    return Math.max(1, inArea); // Siempre asumimos mínimo 1 para que aparezca Clinisord en la simulación
+  }, [selectedLocation]);
+
+  const marketShare = useMemo(() => calculateMarketShare(competitors, clinisordCount), [competitors, clinisordCount]);
 
   const capturable = useMemo(() => {
     if (competitors.length === 0) return 0;

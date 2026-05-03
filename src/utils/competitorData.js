@@ -1,50 +1,74 @@
 // Datos de competidores en España importados desde OpenStreetMap/Overpass API
-import { competitorLocations as osmCompetitors } from './spainCompetitors';
+import { competitorLocations as osmCompetitors } from './spainCompetitors.js';
 
 export const competitorChains = [
   { id: 'gaes', name: 'GAES (Amplifon)', type: 'clínica', color: '#ef4444', count: 0, description: 'Líder del mercado español' },
-  { id: 'aural', name: 'Aural (Widex)', type: 'clínica', color: '#0ea5e9', count: 0, description: 'Especialistas premium' },
+  { id: 'aural', name: 'Aural (Widex)', type: 'clínica', color: '#6366f1', count: 0, description: 'Especialistas premium' },
   { id: 'audika', name: 'Audika', type: 'clínica', color: '#14b8a6', count: 0, description: 'Red en expansión' },
   { id: 'audifon', name: 'Audifón', type: 'clínica', color: '#d946ef', count: 0, description: 'Atención personalizada' },
   { id: 'audical', name: 'Audical', type: 'clínica', color: '#f97316', count: 0, description: 'Especialistas audición' },
   { id: 'Independiente', name: 'Centro Independiente', type: 'clínica', color: '#8b5cf6', count: 0, description: 'Comercio local' }
 ];
 
-// Algoritmo pseudo-aleatorio determinista para redistribuir la competencia
+// Algoritmo basado en el nombre real (extraído de OpenStreetMap)
 function enrichCompetitors(competitors) {
-  return competitors.map(comp => {
-    // Si ya viene con la cadena definida (ej. GAES), lo respetamos
-    if (comp.cadena !== 'Independiente') return comp;
+  const enriched = competitors.map(comp => {
+    // Si ya viene con la cadena definida (y no es Independiente), lo respetamos
+    if (comp.cadena && comp.cadena !== 'Independiente') return comp;
     
-    // Generar un número pseudoaleatorio consistente basado en el ID (ej: "osm-123456")
-    let hash = 0;
-    for (let i = 0; i < comp.id.length; i++) {
-      hash = ((hash << 5) - hash) + comp.id.charCodeAt(i);
-      hash |= 0;
-    }
-    const seed = Math.abs(hash) % 100;
-    
-    // Distribución simulada (%): GAES 15%, Aural 8%, Audika 5%, Audifon 2%, Independiente 70%
     let newChain = 'Independiente';
-    let newName = comp.nombre;
+    const nameLower = comp.nombre.toLowerCase();
     
-    if (seed < 15) {
+    // Whitelist estricta de cadenas conocidas
+    if (nameLower.includes('gaes') || nameLower.includes('amplifon')) {
       newChain = 'gaes';
-      newName = 'Centro GAES';
-    } else if (seed < 23) {
+    } else if (nameLower.includes('aural') || nameLower.includes('widex')) {
       newChain = 'aural';
-      newName = 'Aural Centros Auditivos';
-    } else if (seed < 28) {
+    } else if (nameLower.includes('audika')) {
       newChain = 'audika';
-      newName = 'Centro Audika';
-    } else if (seed < 30) {
-      newChain = 'audifon';
-      newName = 'Centro Audifón';
+    } else if (nameLower.includes('audifon') || nameLower.includes('audifón')) {
+      newChain = 'gaes'; // Muchas veces se confunden en OSM, pero Audifón es relevante
+    } else if (nameLower.includes('audical')) {
+      newChain = 'audical';
+    } else {
+      // Filtrar ruidos: CAP, Centros de Salud, Dentistas, etc.
+      const isNoise = nameLower.includes('cap ') || 
+                      nameLower.includes('atenció primària') || 
+                      nameLower.includes('centro de salud') ||
+                      nameLower.includes('clínica (osm)') ||
+                      nameLower.includes('audiología (osm)') ||
+                      nameLower.includes('dental') ||
+                      nameLower.includes('hospital') ||
+                      nameLower.includes('farmacia') ||
+                      nameLower.includes('fisioterapia') ||
+                      nameLower.includes('podólogo') ||
+                      nameLower.includes('ginecología');
+
+      if (isNoise) return null;
+
+      // Whitelist de términos de audiología
+      const isAudiology = comp.tipo === 'audiología' || 
+                          nameLower.includes('audio') || 
+                          nameLower.includes('audífon') || 
+                          nameLower.includes('auditivo') ||
+                          nameLower.includes('auditiu') ||
+                          nameLower.includes('oír') ||
+                          nameLower.includes('oir') ||
+                          nameLower.includes('ear') ||
+                          nameLower.includes('acústic') ||
+                          nameLower.includes('sordera');
+      
+      if (!isAudiology) {
+        return null;
+      }
     }
     
-    return { ...comp, cadena: newChain, nombre: newName !== comp.nombre ? newName : comp.nombre };
+    return { ...comp, cadena: newChain };
   });
+  
+  return enriched.filter(comp => comp !== null);
 }
+
 
 export const competitorLocations = enrichCompetitors(osmCompetitors);
 

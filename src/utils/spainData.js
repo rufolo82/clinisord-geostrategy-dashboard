@@ -197,7 +197,7 @@ export const clinisordLocations = [
     lat: 40.4046, 
     lng: -3.7037, 
     direccion: 'Paseo de las Acacias, 4, 28005 Madrid',
-    telefono: '91 506 18 79',
+    telefono: '91 506 22 31',
     ciudad: 'madrid'
   },
   { 
@@ -205,8 +205,8 @@ export const clinisordLocations = [
     nombre: 'Clinisord Madrid Felipe II', 
     lat: 40.4239, 
     lng: -3.6771, 
-    direccion: 'Avda. Felipe II, 6, bajo izq., 28009 Madrid',
-    telefono: '91 426 35 35',
+    direccion: 'Avda. Felipe II, 6, 1º Izq., 28009 Madrid',
+    telefono: '91 435 37 82',
     ciudad: 'madrid'
   },
   // MAJADAHONDA - 1 centro (área metropolitana de Madrid)
@@ -219,19 +219,19 @@ export const clinisordLocations = [
     telefono: '91 639 71 55',
     ciudad: 'madrid'
   },
-  // BARCELONA - 3 centros
+  // BARCELONA - 3 centros propios
   { 
     id: 5, 
-    nombre: 'Clinisord Via Augusta', 
+    nombre: 'Clinisord Barcelona Via Augusta', 
     lat: 41.3977, 
     lng: 2.1358, 
-    direccion: 'Via Augusta, 166, 1º-2º, 08006 Barcelona',
+    direccion: 'Via Augusta, 166, 1º-2ª, 08006 Barcelona',
     telefono: '93 240 53 18',
     ciudad: 'barcelona'
   },
   { 
     id: 6, 
-    nombre: 'Clinisord Mallorca', 
+    nombre: 'Clinisord Barcelona Mallorca', 
     lat: 41.3888, 
     lng: 2.1590, 
     direccion: 'Calle Mallorca, 172, 08036 Barcelona',
@@ -240,12 +240,22 @@ export const clinisordLocations = [
   },
   { 
     id: 7, 
-    nombre: 'Clinisord Numancia', 
+    nombre: 'Clinisord Barcelona Numancia', 
     lat: 41.3807, 
     lng: 2.1422, 
     direccion: 'Calle Numancia, 45, 08029 Barcelona',
-    telefono: '91 171 63 97',
+    telefono: '93 171 63 97',
     ciudad: 'barcelona'
+  },
+  // TOLEDO - 1 centro
+  { 
+    id: 8, 
+    nombre: 'Clinisord Toledo', 
+    lat: 39.8667, 
+    lng: -4.0305, 
+    direccion: 'Avda. de Barber, 5, 45005 Toledo',
+    telefono: '925 25 87 28',
+    ciudad: 'toledo'
   },
 ];
 

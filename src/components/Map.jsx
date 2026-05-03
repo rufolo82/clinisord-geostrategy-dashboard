@@ -32,7 +32,7 @@ const createIcon = (type, size = 36, isHovered = false) => {
   const icons = {
     clinisord: '🏥',
     competitor: '⚕️',
-    candidate: '📍',
+    candidate: '🎯',
     optica: '👓',
     farmacia: '💊'
   };
@@ -219,10 +219,34 @@ const createClinisordLogoIcon = (size = 40, isHovered = false) => {
     transition: all 0.3s ease;
     cursor: pointer;
     z-index: ${isHovered ? '1001' : '2'};
-    overflow: hidden;
+    overflow: visible;
     display: flex;
     align-items: center;
     justify-content: center;
+  `;
+  
+  const pulseRingStyle = `
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border: 3px solid #0ea5e9;
+    border-radius: 50%;
+    animation: clinisord-pulse 2s infinite;
+    z-index: -1;
+  `;
+  
+  const innerLogoStyle = `
+    background: white;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: 0 4px 12px -3px rgba(0, 0, 0, 0.4);
   `;
   
   // Estilo de la imagen del logo
@@ -236,7 +260,10 @@ const createClinisordLogoIcon = (size = 40, isHovered = false) => {
     className: 'custom-marker-container clinisord-marker',
     html: `
       <div class="custom-marker-clinisord" style="${containerStyle}">
-        <img src="${logoPath}" alt="${logoAlt}" style="${imageStyle}" />
+        <div style="${pulseRingStyle}"></div>
+        <div style="${innerLogoStyle}">
+          <img src="${logoPath}" alt="${logoAlt}" style="${imageStyle}" />
+        </div>
       </div>
     `,
     iconSize: [scaledSize, scaledSize],
@@ -410,8 +437,10 @@ const MapLegend = ({ layers, googleMapsLoaded, chainVisibility, competitorChains
       
       <div className="p-4 space-y-2 text-xs">
         <div className="flex items-center gap-2">
-          <span className="w-3 h-3 rounded-full bg-emerald-500"></span>
-          <span>Clinisord (Tus centros)</span>
+          <div className="w-4 h-4 rounded-full border-2 border-cyan-500 bg-white flex items-center justify-center">
+            <div className="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse"></div>
+          </div>
+          <span className="font-bold text-cyan-800">Tus Centros (Clinisord)</span>
         </div>
         {layers?.showHeatmap && (
           <div className="flex items-center gap-2">
@@ -422,8 +451,8 @@ const MapLegend = ({ layers, googleMapsLoaded, chainVisibility, competitorChains
         {layers?.showCompetitors && (
           <>
             <div className="flex items-center gap-2">
-              <span className="w-3 h-3 rounded-full bg-red-500"></span>
-              <span>Clínicas competencia ({visibleChainsCount} cadenas)</span>
+              <span className="w-3 h-3 rounded-full bg-[#6366f1] border border-white"></span>
+              <span className="text-slate-700 font-medium">Clínicas competencia ({visibleChainsCount} cadenas)</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="w-3 h-3 rounded-full bg-amber-500"></span>
@@ -439,10 +468,13 @@ const MapLegend = ({ layers, googleMapsLoaded, chainVisibility, competitorChains
         )}
         {layers?.showCompetitors && selectedLocation && (
           <div className="flex items-center gap-2">
-            <span className="w-3 h-3 rounded-full bg-green-500 animate-pulse"></span>
-            <span>Candidato analizado</span>
+            <div className="w-3 h-3 rounded-full bg-emerald-500 animate-pulse flex items-center justify-center">
+               <div className="w-1 h-1 rounded-full bg-white"></div>
+            </div>
+            <span className="font-semibold text-emerald-700">🎯 Candidato analizado</span>
           </div>
         )}
+
       </div>
       <div className="mt-3 pt-3 border-t border-slate-200">
         <p className="text-xs text-slate-500 italic">

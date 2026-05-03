@@ -78,7 +78,7 @@ export function getAllCompetitorProfiles() {
  * Calcula cuota de mercado estimada para una ciudad
  * basándose en número de centros por cadena (OSM data)
  */
-export function calculateMarketShare(competitorsInArea) {
+export function calculateMarketShare(competitorsInArea, clinisordCount = 1) {
   if (!competitorsInArea || competitorsInArea.length === 0) return [];
 
   const chainCounts = {};
@@ -86,12 +86,11 @@ export function calculateMarketShare(competitorsInArea) {
     chainCounts[comp.cadena] = (chainCounts[comp.cadena] || 0) + 1;
   });
 
-  // Añadir estimación para Clinisord (a definir por usuario)
+  // Usamos el conteo real en lugar de estimar el 10%
   const total = Object.values(chainCounts).reduce((a, b) => a + b, 0);
-  const clinisordEstimated = Math.max(1, Math.round(total * 0.1)); // 10% como base
-
-  const allEntries = { ...chainCounts, clinisord: clinisordEstimated };
-  const totalWithClinisord = total + clinisordEstimated;
+  
+  const allEntries = { ...chainCounts, clinisord: clinisordCount };
+  const totalWithClinisord = total + clinisordCount;
 
   return Object.entries(allEntries).map(([chainId, count]) => {
     const profile = COMPETITOR_PROFILES[chainId];
