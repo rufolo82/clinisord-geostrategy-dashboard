@@ -8,7 +8,7 @@ export const COMPETITOR_PROFILES_EXTENDED = {
     presenciaEspana: '~500 centros',
     cuotaMercadoEstimada: 35,
     color: '#ef4444',
-    logo: '/logos/logo-gaes.png',
+    logo: 'https://www.amplifon.com/documents/20124/0/logo-amplifon.svg',
     descripcion: 'Líder del mercado español de audiología. Filial de Amplifon, mayor grupo mundial de audiología. Modelo centrado en volumen y precio competitivo, con fuerte presencia en centros comerciales.',
     estrategiaOperativa: 'Modelo retail masivo. Alta inversión en publicidad en TV (horarios matinales). Estrategia muy proactiva de llamadas comerciales y seguimiento de base de datos para renovaciones de audífonos cada 4-5 años.',
     metricasNegocio: { ratioPacientesAnual: 180, facturacionMedia: '350.000€', ticketMedio: '1.950€' },
@@ -70,7 +70,7 @@ export const COMPETITOR_PROFILES_EXTENDED = {
     presenciaEspana: '~250 centros',
     cuotaMercadoEstimada: 20,
     color: '#0ea5e9',
-    logo: '/logos/logo-aural.jpg',
+    logo: 'https://www.auralcentrosauditivos.es/wp-content/themes/aural/assets/img/logo-aural.svg',
     descripcion: 'Pioneros en España y red oficial de Widex. Posicionamiento premium y muy centrado en el cuidado clínico avanzado y soluciones de alto valor.',
     estrategiaOperativa: 'Posicionamiento como "La excelencia en audición". Trato más clínico y pausado. Mucho enfoque en la calidad de la marca Widex y referenciadores ORL (Otorrinos).',
     metricasNegocio: { ratioPacientesAnual: 120, facturacionMedia: '420.000€', ticketMedio: '3.500€' },
@@ -552,7 +552,7 @@ export const COMPETITOR_PROFILES_EXTENDED = {
   microson: {
     id: 'microson',
     nombre: 'Microson',
-    logo: 'https://logo.clearbit.com/microson.com',
+    logo: 'https://www.microson.es/Img/Logo2.PNG',
     tipo: 'Fabricante y Distribuidor',
     propietario: 'Capital Español',
     añoFundacion: 1950,
@@ -597,7 +597,7 @@ export const COMPETITOR_PROFILES_EXTENDED = {
   audicion_activa: {
     id: 'audicion_activa',
     nombre: 'Audición Activa',
-    logo: 'https://logo.clearbit.com/audicionactiva.com',
+    logo: 'https://audicionactiva.com/wp-content/uploads/2023/10/logo-audicion-activa.png',
     tipo: 'Cadena Nacional',
     propietario: 'Capital Nacional',
     añoFundacion: 2005,
@@ -687,7 +687,7 @@ export const COMPETITOR_PROFILES_EXTENDED = {
   eurosone: {
     id: 'eurosone',
     nombre: 'Eurosone',
-    logo: 'https://logo.clearbit.com/eurosone.com',
+    logo: 'https://www.euro-sone.com/wp-content/uploads/2022/11/logo-eurosone.png',
     tipo: 'Cadena Regional',
     propietario: 'Capital Nacional',
     añoFundacion: 2010,
@@ -732,7 +732,7 @@ export const COMPETITOR_PROFILES_EXTENDED = {
   audias: {
     id: 'audias',
     nombre: 'Audias Centro Auditivo',
-    logo: 'https://logo.clearbit.com/audias.es',
+    logo: 'https://www.audias.es/wp-content/uploads/2025/09/Logo-rectangular-audias-20PP.png',
     tipo: 'Cadena Independiente',
     propietario: 'Independiente',
     añoFundacion: 2012,
@@ -777,7 +777,7 @@ export const COMPETITOR_PROFILES_EXTENDED = {
   audiotek: {
     id: 'audiotek',
     nombre: 'Audiotek',
-    logo: 'https://logo.clearbit.com/audiotek.es',
+    logo: 'https://audiotek.es/wp-content/uploads/2025/05/Logo-Audiotec-color.png',
     tipo: 'Cadena Regional',
     propietario: 'Capital Nacional',
     añoFundacion: 2008,
@@ -817,5 +817,50 @@ export const COMPETITOR_PROFILES_EXTENDED = {
       { tipo: 'servicio', titulo: 'Oportunidad social', descripcion: 'Su enfoque es puramente clínico-tecnológico', oportunidadClinosord: 'A diferencia de Audiotek, Clinisord ofrece una dimensión social única.' }
     ],
     ratings: { google: { min: 4.1, max: 4.6, promedio: 4.4 }, fuente: 'Estimación' },
+  },
+
+  natural_optics: {
+    id: 'natural_optics',
+    nombre: 'Natural Optics Group',
+    logo: '/logos/logo-naturaloptics.png',
+    tipo: 'Red de Ópticas y Audiología',
+    propietario: 'Capital Nacional',
+    añoFundacion: 1988,
+    presenciaEspana: 'Fuerte en el Mediterráneo y Cataluña',
+    cuotaMercadoEstimada: 4,
+    color: '#15803d',
+    descripcion: 'Grupo óptico con una red de centros auditivos integrados. Destacan por su capilaridad en poblaciones medias y un servicio de proximidad muy valorado.',
+    estrategiaOperativa: 'Modelo de servicios compartidos (Óptica + Audio). Gran fidelización a través del historial de salud visual de los pacientes.',
+    metricasNegocio: { ratioPacientesAnual: 100, facturacionMedia: '210.000€', ticketMedio: '1.750€' },
+    analisisSentimiento: {
+      quejasComunes: ['Espacios de audiología a veces reducidos'],
+      elogiosComunes: ['Atención muy cercana', 'Profesionales de confianza']
+    },
+    servicios: {
+      audiometria: { disponible: true, precio: 'Gratuita', nota: '' },
+      adaptacionAudifonos: { disponible: true, precio: 'Incluida', nota: '' },
+      audifonosInfantiles: { disponible: true, precio: 'Variable', nota: '' },
+      teleaudiologia: { disponible: false, precio: null, nota: '' },
+      seguroAuditivo: { disponible: true, precio: 'Variable', nota: '' },
+      financiacion: { disponible: true, precio: 'Hasta 12 meses sin intereses', nota: '' },
+      reparaciones: { disponible: true, precio: 'Variable', nota: '' },
+      rehabilitacionAuditiva: { disponible: false, precio: null, nota: '' },
+      servicioSocial: { disponible: false, precio: null, nota: '' },
+      seguimientoPersonalizado: { disponible: true, precio: 'Bueno', nota: '' },
+    },
+    precios: {
+      audiometria: { min: 0, max: 0, display: 'Gratuita' },
+      audifonos: {
+        gama_basica: { min: 750, max: 1400, display: '750€ – 1.400€', marcas: ['Beltone'] },
+        gama_media: { min: 1400, max: 2900, display: '1.400€ – 2.900€', marcas: ['Beltone Imagine'] },
+        gama_alta: { min: 2900, max: 5200, display: '2.900€ – 5.200€', marcas: ['Beltone Serene'] },
+      },
+    },
+    puntosFuertes: ['Red de centros consolidada', 'Sinergia con óptica', 'Confianza del paciente local'],
+    puntosDebiles: ['Especialización en audio percibida como secundaria', 'Menor equipamiento clínico avanzado'],
+    vulnerabilidades: [
+      { tipo: 'servicio', titulo: 'Especialización limitada', descripcion: 'Su foco principal suele ser la óptica', oportunidadClinosord: 'Captar pacientes que buscan una clínica 100% auditiva y social.' }
+    ],
+    ratings: { google: { min: 4.2, max: 4.7, promedio: 4.5 }, fuente: 'Estimación' },
   },
 };

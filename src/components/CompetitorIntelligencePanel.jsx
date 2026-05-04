@@ -600,7 +600,11 @@ function VulnerabilidadesPanel({ selectedLocation }) {
 function PreciosPanel() {
   const { servicios, competidores, clinisord } = generateServiceComparison();
 
-  const SHOWN_CHAINS = ['gaes', 'aural', 'audika', 'audifon', 'audical', 'afflelou_acoustics', 'specsavers', 'independiente'];
+  const SHOWN_CHAINS = [
+    'gaes', 'aural', 'audika', 'microson', 'audicion_activa', 
+    'cottet', 'eurosone', 'audias', 'audiotek', 'natural_optics',
+    'audifon', 'audical', 'independiente'
+  ];
   const shown = competidores.filter(c => SHOWN_CHAINS.includes(c.id));
 
   const ServiceCell = ({ service, isClinosord = false }) => {
