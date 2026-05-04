@@ -15,6 +15,7 @@ import {
 } from '../utils/competitorIntelligence';
 import { getCompetitorsInArea, calculateDistance } from '../utils/competitorData';
 import { clinisordLocations } from '../utils/spainData';
+import ViabilityTransparencyModal from './ViabilityTransparencyModal';
 
 // -------------------------------------------------------
 // Utilidades visuales
@@ -726,6 +727,7 @@ function PreciosPanel() {
 const CompetitorIntelligencePanel = ({ selectedLocation }) => {
   const [activeSubTab, setActiveSubTab] = useState('cuota');
   const [isFullScreen, setIsFullScreen] = useState(false);
+  const [isMethodologyOpen, setIsMethodologyOpen] = useState(false);
 
   const content = (
     <>
@@ -738,13 +740,22 @@ const CompetitorIntelligencePanel = ({ selectedLocation }) => {
             </div>
             <h3 className="text-sm font-bold text-slate-800">Inteligencia Competitiva</h3>
           </div>
-          <button 
-            onClick={() => setIsFullScreen(!isFullScreen)}
-            className="p-1.5 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-md transition-colors"
-            title={isFullScreen ? "Salir de pantalla completa" : "Pantalla completa"}
-          >
-            {isFullScreen ? <Minimize2 size={16} /> : <Maximize2 size={16} />}
-          </button>
+          <div className="flex items-center gap-1">
+            <button 
+              onClick={() => setIsMethodologyOpen(true)}
+              className="flex items-center gap-1 px-2 py-1 text-[10px] font-bold text-indigo-600 bg-indigo-50 hover:bg-indigo-100 rounded-md transition-colors uppercase tracking-wider"
+            >
+              <Info size={10} />
+              Metodología
+            </button>
+            <button 
+              onClick={() => setIsFullScreen(!isFullScreen)}
+              className="p-1.5 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-md transition-colors"
+              title={isFullScreen ? "Salir de pantalla completa" : "Pantalla completa"}
+            >
+              {isFullScreen ? <Minimize2 size={16} /> : <Maximize2 size={16} />}
+            </button>
+          </div>
         </div>
         <p className="text-xs text-slate-500 mb-3">Análisis estratégico del mercado auditivo español</p>
 
@@ -776,6 +787,11 @@ const CompetitorIntelligencePanel = ({ selectedLocation }) => {
           {activeSubTab === 'precios' && <PreciosPanel />}
         </div>
       </div>
+      {/* Modal de Metodología */}
+      <ViabilityTransparencyModal 
+        isOpen={isMethodologyOpen} 
+        onClose={() => setIsMethodologyOpen(false)} 
+      />
     </>
   );
 

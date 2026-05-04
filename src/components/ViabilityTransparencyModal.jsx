@@ -166,11 +166,51 @@ const ViabilityTransparencyModal = ({ isOpen, onClose, viabilityData }) => {
             </div>
           </div>
 
+          {/* New Section: Data Sources & Methodology */}
+          <div className="mt-8 border-t border-slate-200 pt-6">
+            <h3 className="text-sm font-bold text-slate-800 mb-4 flex items-center gap-2 uppercase tracking-wider">
+              <Info size={16} className="text-primary-500" />
+              Fuentes de Datos y Metodología
+            </h3>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-4">
+                <div>
+                  <h5 className="text-xs font-bold text-slate-700 uppercase mb-2">📍 Competencia (OSM + Curación)</h5>
+                  <p className="text-[11px] text-slate-600 leading-relaxed">
+                    Los datos de ubicación provienen de <strong>OpenStreetMap (Overpass API)</strong>, filtrados y verificados mediante un motor de inteligencia que descarta centros no audiológicos. Los perfiles de cadenas se actualizan trimestralmente (Última: Abril 2026).
+                  </p>
+                </div>
+                <div>
+                  <h5 className="text-xs font-bold text-slate-700 uppercase mb-2">📊 Demografía (INE + Modelos)</h5>
+                  <p className="text-[11px] text-slate-600 leading-relaxed">
+                    Basado en el <strong>Censo 2024 del INE</strong>. Las proyecciones de población mayor de 65 años se calculan por sección censal y código postal, aplicando modelos de densidad urbana.
+                  </p>
+                </div>
+              </div>
+              
+              <div className="space-y-4">
+                <div>
+                  <h5 className="text-xs font-bold text-slate-700 uppercase mb-2">⚖️ Lógica de Comparativa</h5>
+                  <p className="text-[11px] text-slate-600 leading-relaxed">
+                    <strong>¿Cómo detectamos si Clinisord gana?</strong><br/>
+                    El sistema compara cada servicio y precio. Clinisord se marca como ventaja ("gana") cuando:
+                  </p>
+                  <ul className="text-[10px] text-slate-500 mt-1 space-y-1 ml-3 list-disc">
+                    <li><strong>Precio:</strong> El ticket medio de Clinisord es inferior al del competidor en esa gama.</li>
+                    <li><strong>Servicio:</strong> Clinisord ofrece servicios exclusivos (Teleaudiología, Rehabilitación, Orientación Social) que el competidor no tiene disponibles.</li>
+                    <li><strong>Valoración:</strong> El rating de Clinisord es superior al promedio local de la cadena.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* Current Analysis Breakdown */}
           {viabilityData && (
-            <div className="mt-6 p-4 bg-primary-50 rounded-xl border border-primary-200">
+            <div className="mt-8 p-4 bg-primary-50 rounded-xl border border-primary-200">
               <h4 className="text-sm font-semibold text-primary-800 mb-3 flex items-center gap-2">
-                <Info size={16} />
+                <Calculator size={16} />
                 Desglose de tu análisis actual
               </h4>
               <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
