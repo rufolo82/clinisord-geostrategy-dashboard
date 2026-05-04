@@ -99,9 +99,9 @@ function enrichCompetitors(competitors) {
     else if (nameLower.includes('audicion activa')) chainId = 'audicion_activa';
     else if (nameLower.includes('cottet')) chainId = 'cottet';
     else if (nameLower.includes('natural optics')) chainId = 'natural_optics';
-    else if (nameLower.includes('eurosone')) chainId = 'eurosone';
+    else if (nameLower.includes('eurosone') || nameLower.includes('euro-sone')) chainId = 'eurosone';
     else if (nameLower.includes('audias')) chainId = 'audias';
-    else if (nameLower.includes('audiotek')) chainId = 'audiotek';
+    else if (nameLower.includes('audiotek') || nameLower.includes('audiotec')) chainId = 'audiotek';
     else if (nameLower.includes('audiosalud')) chainId = 'audiosalud';
     else if (nameLower.includes('aude')) chainId = 'aude';
     else if (nameLowerClean.includes('jaime de castro')) chainId = 'jaime_castro';
@@ -110,6 +110,13 @@ function enrichCompetitors(competitors) {
     else if (nameLower.includes('audicost')) chainId = 'audicost';
     else if (nameLower.includes('afflelou')) chainId = 'afflelou_acoustics';
     else if (nameLower.includes('specsavers')) chainId = 'specsavers';
+    else if (nameLower.includes('multiopticas') || nameLower.includes('multiópticas')) chainId = 'multiopticas';
+    else if (nameLower.includes('opticalia')) chainId = 'opticalia';
+    else if (nameLower.includes('federopticos') || nameLower.includes('federópticos')) chainId = 'federopticos';
+    else if (nameLower.includes('general optica') || nameLower.includes('general óptica')) chainId = 'general_optica';
+    else if (nameLower.includes('el corte ingles') || nameLower.includes('el corte inglés')) chainId = 'elcorteingles';
+    else if (nameLower.includes('vistaoptica') || nameLower.includes('vistaóptica')) chainId = 'vistaoptica';
+    else if (nameLower.includes('mainat')) chainId = 'mainat';
     
     return { ...comp, cadena: chainId };
   });

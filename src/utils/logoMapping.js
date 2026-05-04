@@ -38,6 +38,22 @@ export const logos = {
     path: '/logos/logo-federopticos.jpg',
     alt: 'Federópticos'
   },
+  general_optica: {
+    path: 'https://www.generaloptica.es/content/images/logo_go.png',
+    alt: 'General Óptica'
+  },
+  elcorteingles: {
+    path: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/El_Corte_Ingl%C3%A9s_logo.svg/1200px-El_Corte_Ingl%C3%A9s_logo.svg.png',
+    alt: 'El Corte Inglés'
+  },
+  vistaoptica: {
+    path: 'https://www.vistaoptica.es/wp-content/uploads/2021/04/logo-vistaoptica.png',
+    alt: 'Vistaóptica'
+  },
+  mainat: {
+    path: 'https://www.mainat.com/wp-content/uploads/2023/11/logo-mainat.png',
+    alt: 'Mainat'
+  },
   natural_optics: {
     path: 'https://naturalopticsgroup.com/wp-content/uploads/2022/10/logo_nog.png',
     alt: 'Natural Optics Group'
