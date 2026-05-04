@@ -157,11 +157,8 @@ function CuotaPanel({ selectedLocation }) {
               {i + 1}
             </span>
             <div className="flex-1 min-w-0 flex items-center gap-2">
-              {d.chainId !== 'clinisord' && d.logo && (
+              {d.logo && (
                 <img src={d.logo} alt="" className="w-5 h-5 object-contain flex-shrink-0" />
-              )}
-              {d.chainId === 'clinisord' && (
-                <img src={clinisord.logo} alt="" className="w-5 h-5 object-contain flex-shrink-0" />
               )}
               <div className="flex-1 min-w-0">
                 <p className="text-sm font-medium text-slate-700 truncate">{d.nombre}</p>
