@@ -21,6 +21,7 @@ export const COMPETITOR_PROFILES = COMPETITOR_PROFILES_EXTENDED;
 export const CLINISORD_PROFILE = {
   id: 'clinisord',
   nombre: 'Centro Social del Audífono (Clinisord)',
+  logo: '/logos/logo-centro-social.png',
   tipo: 'Centro auditivo especializado con enfoque social',
   propietario: 'Clinisord',
   descripcion: 'Centro auditivo con enfoque en el paciente y su entorno social. Especialización clínica combinada con acompañamiento sociocomunitario.',
@@ -97,6 +98,7 @@ export function calculateMarketShare(competitorsInArea, clinisordCount = 1) {
     return {
       chainId,
       nombre: chainId === 'clinisord' ? 'Clinisord' : (profile?.nombre || chainId),
+      logo: chainId === 'clinisord' ? CLINISORD_PROFILE.logo : (profile?.logo || null),
       centros: count,
       cuota: Math.round((count / totalWithClinisord) * 100),
       color: chainId === 'clinisord' ? '#0ea5e9' : (profile?.color || '#94a3b8'),

@@ -8,7 +8,7 @@ export const COMPETITOR_PROFILES_EXTENDED = {
     presenciaEspana: '~500 centros',
     cuotaMercadoEstimada: 35,
     color: '#ef4444',
-    logo: '/logos/gaes.png',
+    logo: '/logos/logo-gaes.png',
     descripcion: 'Líder del mercado español de audiología. Filial de Amplifon, mayor grupo mundial de audiología. Modelo centrado en volumen y precio competitivo, con fuerte presencia en centros comerciales.',
     estrategiaOperativa: 'Modelo retail masivo. Alta inversión en publicidad en TV (horarios matinales). Estrategia muy proactiva de llamadas comerciales y seguimiento de base de datos para renovaciones de audífonos cada 4-5 años.',
     metricasNegocio: { ratioPacientesAnual: 180, facturacionMedia: '350.000€', ticketMedio: '1.950€' },
@@ -70,7 +70,7 @@ export const COMPETITOR_PROFILES_EXTENDED = {
     presenciaEspana: '~250 centros',
     cuotaMercadoEstimada: 20,
     color: '#0ea5e9',
-    logo: '/logos/aural.png',
+    logo: '/logos/logo-aural.jpg',
     descripcion: 'Pioneros en España y red oficial de Widex. Posicionamiento premium y muy centrado en el cuidado clínico avanzado y soluciones de alto valor.',
     estrategiaOperativa: 'Posicionamiento como "La excelencia en audición". Trato más clínico y pausado. Mucho enfoque en la calidad de la marca Widex y referenciadores ORL (Otorrinos).',
     metricasNegocio: { ratioPacientesAnual: 120, facturacionMedia: '420.000€', ticketMedio: '3.500€' },
@@ -125,7 +125,7 @@ export const COMPETITOR_PROFILES_EXTENDED = {
     presenciaEspana: '~130 centros',
     cuotaMercadoEstimada: 12,
     color: '#14b8a6',
-    logo: '/logos/audika.png',
+    logo: '/logos/logo-audika.svg',
     descripcion: 'Perteneciente al gigante danés Demant (fabricante de Oticon, Bernafon). Expansión acelerada comprando centros locales independientes en España.',
     estrategiaOperativa: 'Expansión inorgánica: compran gabinetes consolidados y les cambian la marca. Campañas muy agresivas de 2x1 o "pruebe gratis 30 días".',
     metricasNegocio: { ratioPacientesAnual: 140, facturacionMedia: '290.000€', ticketMedio: '2.100€' },
@@ -452,7 +452,7 @@ export const COMPETITOR_PROFILES_EXTENDED = {
     presenciaEspana: '~2.000+ centros',
     cuotaMercadoEstimada: 12,
     color: '#8b5cf6',
-    logo: null,
+    logo: 'https://logo.clearbit.com/audiospecialist.com',
     descripcion: 'Red atomizada de centros independientes. Gran variabilidad de calidad y precios. Son el gabinete de barrio clásico.',
     estrategiaOperativa: 'El "Boca a Boca" es su motor de vida. Conocen a todos los vecinos por su nombre. Marketing nulo (algún folleto en el barrio), bajo volumen pero altísima recurrencia.',
     metricasNegocio: { ratioPacientesAnual: 70, facturacionMedia: '130.000€', ticketMedio: '1.600€' },
@@ -552,6 +552,7 @@ export const COMPETITOR_PROFILES_EXTENDED = {
   microson: {
     id: 'microson',
     nombre: 'Microson',
+    logo: 'https://logo.clearbit.com/microson.com',
     tipo: 'Fabricante y Distribuidor',
     propietario: 'Capital Español',
     añoFundacion: 1950,
@@ -596,6 +597,7 @@ export const COMPETITOR_PROFILES_EXTENDED = {
   audicion_activa: {
     id: 'audicion_activa',
     nombre: 'Audición Activa',
+    logo: 'https://logo.clearbit.com/audicionactiva.com',
     tipo: 'Cadena Nacional',
     propietario: 'Capital Nacional',
     añoFundacion: 2005,
@@ -640,6 +642,7 @@ export const COMPETITOR_PROFILES_EXTENDED = {
   cottet: {
     id: 'cottet',
     nombre: 'Cottet 1902',
+    logo: '/logos/logo-cottet.jpg',
     tipo: 'Grupo Óptico-Auditivo Premium',
     propietario: 'Familia Cottet',
     añoFundacion: 1902,
@@ -684,6 +687,7 @@ export const COMPETITOR_PROFILES_EXTENDED = {
   eurosone: {
     id: 'eurosone',
     nombre: 'Eurosone',
+    logo: 'https://logo.clearbit.com/eurosone.com',
     tipo: 'Cadena Regional',
     propietario: 'Capital Nacional',
     añoFundacion: 2010,
@@ -728,6 +732,7 @@ export const COMPETITOR_PROFILES_EXTENDED = {
   audias: {
     id: 'audias',
     nombre: 'Audias Centro Auditivo',
+    logo: 'https://logo.clearbit.com/audias.es',
     tipo: 'Cadena Independiente',
     propietario: 'Independiente',
     añoFundacion: 2012,
@@ -772,6 +777,7 @@ export const COMPETITOR_PROFILES_EXTENDED = {
   audiotek: {
     id: 'audiotek',
     nombre: 'Audiotek',
+    logo: 'https://logo.clearbit.com/audiotek.es',
     tipo: 'Cadena Regional',
     propietario: 'Capital Nacional',
     añoFundacion: 2008,
