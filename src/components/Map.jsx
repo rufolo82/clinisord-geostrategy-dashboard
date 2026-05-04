@@ -869,26 +869,58 @@ const Map = ({
             </Marker>
             
             {/* Marcadores de competidores */}
-            {layers?.showCompetitors && competitors?.map((competitor) => (
-              <Marker
-                key={`competitor-${competitor.id}`}
-                position={[competitor.lat, competitor.lng]}
-                icon={createIcon(competitor.tipo === 'clínica' ? 'competitor' : 
-                               competitor.tipo === 'óptica' ? 'optica' : 'farmacia', 28, hoveredMarker === `competitor-${competitor.id}`)}
-                eventHandlers={{
-                  mouseover: (e) => handleMarkerMouseEnter(e, `competitor-${competitor.id}`, competitor.tipo, competitor.nombre),
-                  mouseout: handleMarkerMouseLeave
-                }}
-              >
+            {layers?.showCompetitors && competitors?.map((competitor) => {
+              // Si no tiene cadena (ej. de Google Maps), intentar identificarla
+              let chainId = competitor.cadena;
+              if (!chainId && competitor.nombre) {
+                const nameLower = competitor.nombre.toLowerCase();
+                if (nameLower.includes('gaes') || nameLower.includes('amplifon')) chainId = 'gaes';
+                else if (nameLower.includes('aural') || nameLower.includes('widex')) chainId = 'aural';
+                else if (nameLower.includes('audika')) chainId = 'audika';
+                else if (nameLower.includes('microson')) chainId = 'microson';
+                else if (nameLower.includes('audicion activa')) chainId = 'audicion_activa';
+                else if (nameLower.includes('audicost')) chainId = 'audicost';
+                else if (nameLower.includes('afflelou')) chainId = 'afflelou_acoustics';
+                else if (nameLower.includes('specsavers')) chainId = 'specsavers';
+                else if (nameLower.includes('eurosone')) chainId = 'eurosone';
+                else if (nameLower.includes('audias')) chainId = 'audias';
+                else if (nameLower.includes('audiotek')) chainId = 'audiotek';
+              }
+
+              const hasLogo = chainId && getLogoPath(chainId) && !needsPlaceholder(chainId);
+              const chainColor = chainId ? getChainColor(chainId) : '#ef4444';
+
+              return (
+                <Marker
+                  key={`competitor-${competitor.id}`}
+                  position={[competitor.lat, competitor.lng]}
+                  icon={hasLogo 
+                    ? createLogoIcon(chainId, 36, hoveredMarker === `competitor-${competitor.id}`)
+                    : createIcon(competitor.tipo === 'clínica' ? 'competitor' : 
+                                 competitor.tipo === 'óptica' ? 'optica' : 'farmacia', 28, hoveredMarker === `competitor-${competitor.id}`)
+                  }
+                  eventHandlers={{
+                    mouseover: (e) => handleMarkerMouseEnter(e, `competitor-${competitor.id}`, competitor.tipo, competitor.nombre),
+                    mouseout: handleMarkerMouseLeave
+                  }}
+                >
                 <Popup>
                   <div className="text-sm p-1">
-                    <strong className="block text-slate-800 mb-1">
-                      {competitor.tipo === 'clínica' ? '⚕️' : 
-                       competitor.tipo === 'óptica' ? '👓' : '💊'} {competitor.nombre}
+                    <strong className="block text-slate-800 mb-1 flex items-center gap-2">
+                      <span 
+                        className="w-3 h-3 rounded-full" 
+                        style={{ backgroundColor: chainColor }}
+                      />
+                      {competitor.nombre}
                     </strong>
-                    <span className="text-slate-500 text-xs">
-                      {competitor.distancia ? `Distancia: ${competitor.distancia} km` : ''}
-                    </span>
+                    <div className="text-slate-500 text-xs flex justify-between items-center mb-1">
+                      <span>{competitor.distancia ? `${competitor.distancia} km` : ''}</span>
+                      {chainId && (
+                        <span className="font-medium text-slate-700">
+                          {competitorChains?.find(c => c.id === chainId)?.name}
+                        </span>
+                      )}
+                    </div>
                     <span className="block text-xs text-slate-400 mt-1">{competitor.direccion || competitor.vicinity || ''}</span>
                     {competitor.fuente && (
                       <span className="inline-block mt-1 px-2 py-0.5 bg-blue-100 text-blue-700 text-xs rounded">
