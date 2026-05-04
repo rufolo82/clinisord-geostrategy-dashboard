@@ -10,19 +10,19 @@ export const logos = {
   
   // Competidores
   gaes: {
-    path: '/logos/logo-gaes.png',
-    alt: 'GAES'
+    path: 'https://www.amplifon.com/documents/20124/0/logo-amplifon.svg',
+    alt: 'GAES (Amplifon)'
   },
   aural: {
-    path: '/logos/logo-aural.jpg',
+    path: 'https://www.auralcentrosauditivos.es/wp-content/themes/aural/assets/img/logo-aural.svg',
     alt: 'Aural'
   },
   audika: {
-    path: '/logos/logo-audika.svg',
+    path: 'https://www.audika.es/Content/img/logo-audika.svg',
     alt: 'Audika'
   },
-  afflelou: {
-    path: '/logos/logo-afflelou.svg',
+  afflelou_acoustics: {
+    path: 'https://www.afflelou.es/Content/img/logo-afflelou.svg',
     alt: 'Alain Afflelou'
   },
   multiopticas: {
@@ -38,61 +38,57 @@ export const logos = {
     path: '/logos/logo-federopticos.jpg',
     alt: 'Federópticos'
   },
-  naturaloptics: {
-    path: '/logos/logo-naturaloptics.png',
-    alt: 'Natural Optics'
+  natural_optics: {
+    path: 'https://naturalopticsgroup.com/wp-content/uploads/2022/10/logo_nog.png',
+    alt: 'Natural Optics Group'
+  },
+  microson: {
+    path: 'https://www.microson.es/Img/Logo2.PNG',
+    alt: 'Microson'
+  },
+  audicion_activa: {
+    path: 'https://audicionactiva.com/wp-content/uploads/2023/10/logo-audicion-activa.png',
+    alt: 'Audición Activa'
+  },
+  eurosone: {
+    path: 'https://www.euro-sone.com/wp-content/uploads/2022/11/logo-eurosone.png',
+    alt: 'Eurosone'
+  },
+  audias: {
+    path: 'https://www.audias.es/wp-content/uploads/2025/09/Logo-rectangular-audias-20PP.png',
+    alt: 'Audias'
+  },
+  audiotek: {
+    path: 'https://audiotek.es/wp-content/uploads/2025/05/Logo-Audiotec-color.png',
+    alt: 'Audiotek'
+  },
+  audifon: {
+    path: 'https://centrosauditivos.es/wp-content/uploads/2018/11/audifon-logo.png',
+    alt: 'Audifon'
+  },
+  audical: {
+    path: 'https://www.audical.com.uy/content/dam/latam/icons/brand-logo/red-logos/audical-logo-header.png/jcr:content/renditions/cq5dam.web.1280.1280.png',
+    alt: 'Audical'
   },
   belio: {
     path: '/logos/logo-belio.png',
     alt: 'Belio Audición'
   },
   cottet: {
-    path: '/logos/logo-cottet.jpg',
+    path: 'https://www.cottet.com/skin/frontend/cottet/default/images/logo.png',
     alt: 'Cottet Audio'
   },
   audionova: {
     path: '/logos/logo-audionova.jpg',
     alt: 'AudioNova'
   },
-  generaloptica: {
-    path: null,
-    alt: 'General Óptica',
-    placeholder: true
+  specsavers: {
+    path: 'https://www.specsavers.es/sites/default/files/logo.png',
+    alt: 'Specsavers'
   },
   audicost: {
-    path: null,
-    alt: 'Audicost',
-    placeholder: true
-  },
-  vistalia: {
-    path: null,
-    alt: 'Vistalia',
-    placeholder: true
-  },
-  sioigo: {
-    path: null,
-    alt: 'SiOigo',
-    placeholder: true
-  },
-  audimad: {
-    path: null,
-    alt: 'Audimad',
-    placeholder: true
-  },
-  grandaudition: {
-    path: null,
-    alt: 'GrandAudition',
-    placeholder: true
-  },
-  audioplan: {
-    path: null,
-    alt: 'Audioplan',
-    placeholder: true
-  },
-  elcorteingles: {
-    path: null,
-    alt: 'El Corte Inglés',
-    placeholder: true
+    path: 'https://audicostcentrosauditivos.com/wp-content/uploads/2021/05/logo-audicost.png',
+    alt: 'Audicost'
   },
   oidox: {
     path: null,
