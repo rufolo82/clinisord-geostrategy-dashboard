@@ -548,4 +548,231 @@ export const COMPETITOR_PROFILES_EXTENDED = {
     ],
     ratings: { google: { min: 4.0, max: 4.8, promedio: 4.3 }, fuente: 'Rating farmacia' },
   },
+
+  microson: {
+    id: 'microson',
+    nombre: 'Microson',
+    tipo: 'Fabricante y Distribuidor',
+    propietario: 'Capital Español',
+    añoFundacion: 1950,
+    presenciaEspana: 'Red nacional',
+    cuotaMercadoEstimada: 5,
+    color: '#f43f5e',
+    descripcion: 'Una de las empresas históricas del sector audioprotésico español. Conocida por su trayectoria como fabricante propio y su red de centros asociados.',
+    estrategiaOperativa: 'Enfoque en la fabricación propia y soporte técnico de proximidad. Imagen de marca tradicional y consolidada.',
+    metricasNegocio: { ratioPacientesAnual: 100, facturacionMedia: '220.000€', ticketMedio: '1.800€' },
+    analisisSentimiento: {
+      quejasComunes: ['Diseños a veces menos vanguardistas que multinacionales', 'Marketing menos agresivo'],
+      elogiosComunes: ['Soporte técnico excelente', 'Producto nacional de confianza']
+    },
+    servicios: {
+      audiometria: { disponible: true, precio: 'Gratuita', nota: '' },
+      adaptacionAudifonos: { disponible: true, precio: 'Incluida', nota: '' },
+      financiacion: { disponible: true, precio: 'Flexible', nota: '' },
+      reparaciones: { disponible: true, precio: 'Servicio propio', nota: 'Rápido' },
+      seguimientoPersonalizado: { disponible: true, precio: 'Incluido', nota: '' },
+    },
+    precios: {
+      audiometria: { min: 0, max: 0, display: 'Gratuita' },
+      audifonos: {
+        gama_basica: { min: 800, max: 1500, display: '800€ – 1.500€', marcas: ['Microson M1'] },
+        gama_media: { min: 1500, max: 3000, display: '1.500€ – 3.000€', marcas: ['Microson M2'] },
+        gama_alta: { min: 3000, max: 5500, display: '3.000€ – 5.500€', marcas: ['Microson M3'] },
+      },
+    },
+    puntosFuertes: ['Fabricación propia', 'Experiencia histórica', 'Proximidad técnica'],
+    puntosDebiles: ['Menor músculo financiero que grupos mundiales', 'Imagen percibida como menos moderna'],
+    vulnerabilidades: [
+      { tipo: 'tecnología', titulo: 'Competencia en I+D', descripcion: 'Presión de gigantes globales con mayor inversión', oportunidadClinosord: 'Aliarse con Microson para soporte técnico local o competir en modernidad.' }
+    ],
+    ratings: { google: { min: 4.1, max: 4.5, promedio: 4.3 }, fuente: 'Estimación' },
+  },
+
+  audicion_activa: {
+    id: 'audicion_activa',
+    nombre: 'Audición Activa',
+    tipo: 'Cadena Nacional',
+    propietario: 'Capital Nacional',
+    añoFundacion: 2005,
+    presenciaEspana: 'Múltiples centros en toda España',
+    cuotaMercadoEstimada: 6,
+    color: '#10b981',
+    descripcion: 'Empresa especializada en la venta de audífonos con presencia en múltiples centros en toda España. Se caracterizan por un modelo de negocio ágil y cercano.',
+    estrategiaOperativa: 'Expansión basada en ubicaciones estratégicas y campañas de captación directa. Gran enfoque en la relación calidad-precio.',
+    metricasNegocio: { ratioPacientesAnual: 130, facturacionMedia: '260.000€', ticketMedio: '1.900€' },
+    analisisSentimiento: {
+      quejasComunes: ['Alta rotación de personal en algunos centros'],
+      elogiosComunes: ['Precios claros y competitivos', 'Amabilidad en el trato']
+    },
+    servicios: {
+      audiometria: { disponible: true, precio: 'Gratuita', nota: '' },
+      adaptacionAudifonos: { disponible: true, precio: 'Incluida', nota: '' },
+      financiacion: { disponible: true, precio: 'Hasta 24 meses', nota: '' },
+      seguimientoPersonalizado: { disponible: true, precio: 'Incluido', nota: '' },
+    },
+    precios: {
+      audiometria: { min: 0, max: 0, display: 'Gratuita' },
+      audifonos: {
+        gama_basica: { min: 700, max: 1400, display: '700€ – 1.400€', marcas: ['Varios'] },
+        gama_media: { min: 1400, max: 2800, display: '1.400€ – 2.800€', marcas: ['Phonak', 'Signia'] },
+        gama_alta: { min: 2800, max: 5000, display: '2.800€ – 5.000€', marcas: ['Premium'] },
+      },
+    },
+    puntosFuertes: ['Red nacional consolidada', 'Relación calidad-precio', 'Especialización en audífonos'],
+    puntosDebiles: ['Marca con menos notoriedad que GAES', 'Servicios complementarios limitados'],
+    vulnerabilidades: [
+      { tipo: 'marca', titulo: 'Menor fidelización', descripcion: 'Modelo muy basado en captación por precio', oportunidadClinosord: 'Ofrecer mayor valor social y humano para fidelizar al paciente de largo plazo.' }
+    ],
+    ratings: { google: { min: 4.0, max: 4.6, promedio: 4.3 }, fuente: 'Estimación' },
+  },
+
+  cottet: {
+    id: 'cottet',
+    nombre: 'Cottet 1902',
+    tipo: 'Grupo Óptico-Auditivo Premium',
+    propietario: 'Familia Cottet',
+    añoFundacion: 1902,
+    presenciaEspana: 'Fuerte en Cataluña',
+    cuotaMercadoEstimada: 4,
+    color: '#b45309',
+    descripcion: 'Grupo óptico histórico con una división auditiva muy sólida. Imagen premium, ubicaciones de lujo y una clientela muy fiel de alto poder adquisitivo en Cataluña.',
+    estrategiaOperativa: 'Posicionamiento premium y experiencial. Locales emblemáticos (flagships). Combinan moda (gafas) con salud auditiva de alto nivel.',
+    metricasNegocio: { ratioPacientesAnual: 90, facturacionMedia: '400.000€', ticketMedio: '3.200€' },
+    analisisSentimiento: {
+      quejasComunes: ['Precios elevados', 'Sensación de elitismo'],
+      elogiosComunes: ['Experiencia de compra inmejorable', 'Profesionales de gran prestigio']
+    },
+    servicios: {
+      audiometria: { disponible: true, precio: 'Gratuita', nota: '' },
+      adaptacionAudifonos: { disponible: true, precio: 'Incluida', nota: 'Alta precisión' },
+      teleaudiologia: { disponible: true, precio: 'Disponible', nota: '' },
+      seguimientoPersonalizado: { disponible: true, precio: 'Excelente', nota: '' },
+    },
+    precios: {
+      audiometria: { min: 0, max: 0, display: 'Gratuita' },
+      audifonos: {
+        gama_basica: { min: 1200, max: 2000, display: '1.200€ – 2.000€', marcas: ['Widex', 'Starkey'] },
+        gama_media: { min: 2000, max: 4000, display: '2.000€ – 4.000€', marcas: ['Phonak'] },
+        gama_alta: { min: 4000, max: 7500, display: '4.000€ – 7.500€', marcas: ['Premium range'] },
+      },
+    },
+    puntosFuertes: ['Imagen de marca impecable', 'Ubicaciones estratégicas', 'Calidad de servicio'],
+    puntosDebiles: ['Barrera de precio', 'Limitado geográficamente a Cataluña/Madrid'],
+    vulnerabilidades: [
+      { tipo: 'precio', titulo: 'Nicho restringido', descripcion: 'Sus precios excluyen a gran parte de la población', oportunidadClinosord: 'Ofrecer la misma tecnología con un trato social y precios un 20% inferiores.' }
+    ],
+    ratings: { google: { min: 4.5, max: 4.9, promedio: 4.7 }, fuente: 'Estimación' },
+  },
+
+  eurosone: {
+    id: 'eurosone',
+    nombre: 'Eurosone',
+    tipo: 'Cadena Regional',
+    propietario: 'Capital Nacional',
+    añoFundacion: 2010,
+    presenciaEspana: 'Referente en Madrid',
+    cuotaMercadoEstimada: 3,
+    color: '#6d28d9',
+    descripcion: 'Referente en Madrid y Comunidad de Madrid, conocidos por sus precios altamente competitivos y campañas de marketing directo agresivas.',
+    estrategiaOperativa: 'Liderazgo en costes. Gran volumen de adaptaciones. Publicidad centrada en ofertas y descuentos directos.',
+    metricasNegocio: { ratioPacientesAnual: 160, facturacionMedia: '280.000€', ticketMedio: '1.600€' },
+    analisisSentimiento: {
+      quejasComunes: ['Consultas a veces rápidas por volumen', 'Ambiente más comercial que clínico'],
+      elogiosComunes: ['Los mejores precios de Madrid', 'Rapidez en la entrega']
+    },
+    servicios: {
+      audiometria: { disponible: true, precio: 'Gratuita', nota: '' },
+      adaptacionAudifonos: { disponible: true, precio: 'Incluida', nota: '' },
+      financiacion: { disponible: true, precio: 'Muy flexible', nota: '' },
+      seguimientoPersonalizado: { disponible: true, precio: 'Básico', nota: '' },
+    },
+    precios: {
+      audiometria: { min: 0, max: 0, display: 'Gratuita' },
+      audifonos: {
+        gama_basica: { min: 600, max: 1200, display: '600€ – 1.200€', marcas: ['Marcas blancas'] },
+        gama_media: { min: 1200, max: 2400, display: '1.200€ – 2.400€', marcas: ['Unitron', 'Bernafon'] },
+        gama_alta: { min: 2400, max: 4500, display: '2.400€ – 4.500€', marcas: ['Phonak'] },
+      },
+    },
+    puntosFuertes: ['Precios imbatibles en Madrid', 'Agilidad comercial', 'Fuerte inversión local'],
+    puntosDebiles: ['Percepción de menor calidad por el bajo precio', 'Servicios post-venta saturados'],
+    vulnerabilidades: [
+      { tipo: 'calidad', titulo: 'Guerra de precios', descripcion: 'Dificultad para mantener márgenes y calidad', oportunidadClinosord: 'Posicionarse como "Social y Humano" frente a lo "Económico y Rápido".' }
+    ],
+    ratings: { google: { min: 3.8, max: 4.3, promedio: 4.1 }, fuente: 'Estimación' },
+  },
+
+  audias: {
+    id: 'audias',
+    nombre: 'Audias Centro Auditivo',
+    tipo: 'Cadena Independiente',
+    propietario: 'Independiente',
+    añoFundacion: 2012,
+    presenciaEspana: 'Madrid y Noroeste',
+    cuotaMercadoEstimada: 2,
+    color: '#4f46e5',
+    descripcion: 'Cadena de centros independientes con una fuerte vocación de servicio personalizado. Referente en Madrid por su trato humano y profesional.',
+    estrategiaOperativa: 'Modelo de gabinete de autor. Gran enfoque en la fidelización del paciente y recomendaciones de otorrinolaringólogos locales.',
+    metricasNegocio: { ratioPacientesAnual: 80, facturacionMedia: '180.000€', ticketMedio: '2.200€' },
+    analisisSentimiento: {
+      quejasComunes: ['Citas a veces con espera prolongada'],
+      elogiosComunes: ['Te escuchan de verdad', 'Seguimiento muy cercano']
+    },
+    servicios: {
+      audiometria: { disponible: true, precio: 'Gratuita', nota: '' },
+      adaptacionAudifonos: { disponible: true, precio: 'Incluida', nota: '' },
+      seguimientoPersonalizado: { disponible: true, precio: 'Excelente', nota: '' },
+    },
+    precios: {
+      audiometria: { min: 0, max: 0, display: 'Gratuita' },
+      audifonos: {
+        gama_basica: { min: 900, max: 1600, display: '900€ – 1.600€', marcas: ['Oticon'] },
+        gama_media: { min: 1600, max: 3200, display: '1.600€ – 3.200€', marcas: ['Oticon Real'] },
+        gama_alta: { min: 3200, max: 6000, display: '3.200€ – 6.000€', marcas: ['Premium'] },
+      },
+    },
+    puntosFuertes: ['Trato personalizado', 'Reputación clínica', 'Fidelidad del paciente'],
+    puntosDebiles: ['Menor visibilidad de marca', 'Escala limitada'],
+    vulnerabilidades: [
+      { tipo: 'escala', titulo: 'Dificultad competitiva', descripcion: 'Menos recursos para publicidad masiva', oportunidadClinosord: 'Compartir valores de cercanía pero con mayor apoyo tecnológico y social.' }
+    ],
+    ratings: { google: { min: 4.4, max: 4.8, promedio: 4.6 }, fuente: 'Estimación' },
+  },
+
+  audiotek: {
+    id: 'audiotek',
+    nombre: 'Audiotek',
+    tipo: 'Cadena Regional',
+    propietario: 'Capital Nacional',
+    añoFundacion: 2008,
+    presenciaEspana: 'Principalmente en Cataluña',
+    cuotaMercadoEstimada: 3,
+    color: '#ec4899',
+    descripcion: 'Con más de 15 años de experiencia, Audiotek opera principalmente en Cataluña, ofreciendo soluciones auditivas con un enfoque clínico y tecnológico equilibrado.',
+    estrategiaOperativa: 'Especialización en tecnología de última generación. Presencia en barrios residenciales y acuerdos con mutuas médicas.',
+    metricasNegocio: { ratioPacientesAnual: 110, facturacionMedia: '240.000€', ticketMedio: '2.000€' },
+    analisisSentimiento: {
+      quejasComunes: ['Gestión de citas mejorable'],
+      elogiosComunes: ['Buenos profesionales', 'Tecnología avanzada']
+    },
+    servicios: {
+      audiometria: { disponible: true, precio: 'Gratuita', nota: '' },
+      adaptacionAudifonos: { disponible: true, precio: 'Incluida', nota: '' },
+      seguimientoPersonalizado: { disponible: true, precio: 'Bueno', nota: '' },
+    },
+    precios: {
+      audiometria: { min: 0, max: 0, display: 'Gratuita' },
+      audifonos: {
+        gama_basica: { min: 850, max: 1500, display: '850€ – 1.500€', marcas: ['Resound'] },
+        gama_media: { min: 1500, max: 3100, display: '1.500€ – 3.100€', marcas: ['Resound Omnia'] },
+        gama_alta: { min: 3100, max: 5800, display: '3.100€ – 5.800€', marcas: ['Resound Nexia'] },
+      },
+    },
+    puntosFuertes: ['Experiencia consolidada en Cataluña', 'Equilibrio clínico-comercial', 'Buenos acuerdos locales'],
+    puntosDebiles: ['Notoriedad de marca en proceso de expansión', 'Falta de servicios sociales estructurados'],
+    vulnerabilidades: [
+      { tipo: 'servicio', titulo: 'Oportunidad social', descripcion: 'Su enfoque es puramente clínico-tecnológico', oportunidadClinosord: 'A diferencia de Audiotek, Clinisord ofrece una dimensión social única.' }
+    ],
+    ratings: { google: { min: 4.1, max: 4.6, promedio: 4.4 }, fuente: 'Estimación' },
+  },
 };

@@ -2,11 +2,26 @@
 import { competitorLocations as osmCompetitors } from './spainCompetitors.js';
 
 export const competitorChains = [
+  // Nacionales
   { id: 'gaes', name: 'GAES (Amplifon)', type: 'clínica', color: '#ef4444', count: 0, description: 'Líder del mercado español' },
-  { id: 'aural', name: 'Aural (Widex)', type: 'clínica', color: '#6366f1', count: 0, description: 'Especialistas premium' },
-  { id: 'audika', name: 'Audika', type: 'clínica', color: '#14b8a6', count: 0, description: 'Red en expansión' },
-  { id: 'audifon', name: 'Audifón', type: 'clínica', color: '#d946ef', count: 0, description: 'Atención personalizada' },
-  { id: 'audical', name: 'Audical', type: 'clínica', color: '#f97316', count: 0, description: 'Especialistas audición' },
+  { id: 'audika', name: 'Audika', type: 'clínica', color: '#14b8a6', count: 0, description: 'Red de amplia cobertura nacional' },
+  { id: 'aural', name: 'Aural (Widex)', type: 'clínica', color: '#6366f1', count: 0, description: 'Especialistas en acúfenos' },
+  { id: 'microson', name: 'Microson', type: 'clínica', color: '#f43f5e', count: 0, description: 'Histórica del sector español' },
+  { id: 'audicion_activa', name: 'Audición Activa', type: 'clínica', color: '#10b981', count: 0, description: 'Presencia nacional' },
+  
+  // Regionales
+  { id: 'cottet', name: 'Cottet 1902', type: 'óptica', color: '#b45309', count: 0, description: 'Premium - Cataluña' },
+  { id: 'natural_optics', name: 'Natural Optics', type: 'óptica', color: '#0ea5e9', count: 0, description: 'Fuerte en el Mediterráneo' },
+  { id: 'eurosone', name: 'Eurosone', type: 'clínica', color: '#6d28d9', count: 0, description: 'Precios competitivos - Madrid' },
+  { id: 'audias', name: 'Audias', type: 'clínica', color: '#4f46e5', count: 0, description: 'Cadena independiente - Madrid' },
+  { id: 'audiotek', name: 'Audiotek', type: 'clínica', color: '#ec4899', count: 0, description: 'Principalmente en Cataluña' },
+  
+  // Otros Regionales (Referencia)
+  { id: 'audiosalud', name: 'Audiosalud', type: 'clínica', color: '#059669', count: 0, description: 'Destacada en Andalucía' },
+  { id: 'aude', name: 'Aude', type: 'clínica', color: '#dc2626', count: 0, description: 'Referente en Andalucía' },
+  { id: 'jaime_castro', name: 'Jaime de Castro', type: 'clínica', color: '#d97706', count: 0, description: 'Comunidad Valenciana' },
+  
+  // Independientes
   { id: 'Independiente', name: 'Centro Independiente', type: 'clínica', color: '#8b5cf6', count: 0, description: 'Comercio local' }
 ];
 
@@ -16,54 +31,86 @@ function enrichCompetitors(competitors) {
     // Si ya viene con la cadena definida (y no es Independiente), lo respetamos
     if (comp.cadena && comp.cadena !== 'Independiente') return comp;
     
-    let newChain = 'Independiente';
-    const nameLower = comp.nombre.toLowerCase();
+    const name = comp.nombre || 'Centro Auditivo';
+    const nameLower = name.toLowerCase();
     
-    // Whitelist estricta de cadenas conocidas
-    if (nameLower.includes('gaes') || nameLower.includes('amplifon')) {
-      newChain = 'gaes';
-    } else if (nameLower.includes('aural') || nameLower.includes('widex')) {
-      newChain = 'aural';
-    } else if (nameLower.includes('audika')) {
-      newChain = 'audika';
-    } else if (nameLower.includes('audifon') || nameLower.includes('audifón')) {
-      newChain = 'gaes'; // Muchas veces se confunden en OSM, pero Audifón es relevante
-    } else if (nameLower.includes('audical')) {
-      newChain = 'audical';
-    } else {
-      // Filtrar ruidos: CAP, Centros de Salud, Dentistas, etc.
-      const isNoise = nameLower.includes('cap ') || 
-                      nameLower.includes('atenció primària') || 
-                      nameLower.includes('centro de salud') ||
-                      nameLower.includes('clínica (osm)') ||
-                      nameLower.includes('audiología (osm)') ||
-                      nameLower.includes('dental') ||
-                      nameLower.includes('hospital') ||
-                      nameLower.includes('farmacia') ||
-                      nameLower.includes('fisioterapia') ||
-                      nameLower.includes('podólogo') ||
-                      nameLower.includes('ginecología');
+    // Lista de palabras clave que DEFINEN un centro auditivo
+    const isAudiology = nameLower.includes('audio') || 
+                        nameLower.includes('audición') || 
+                        nameLower.includes('audicion') || 
+                        nameLower.includes('audífono') || 
+                        nameLower.includes('audifono') ||
+                        nameLower.includes('oír') ||
+                        nameLower.includes('oir') ||
+                        nameLower.includes('gaes') ||
+                        nameLower.includes('aural') ||
+                        nameLower.includes('audika') ||
+                        nameLower.includes('audifón') ||
+                        nameLower.includes('audifon') ||
+                        nameLower.includes('audical') ||
+                        nameLower.includes('audicost') ||
+                        nameLower.includes('afflelou') ||
+                        nameLower.includes('specsavers') ||
+                        nameLower.includes('clinisord');
 
-      if (isNoise) return null;
+    // Filtrar ruido de OSM (clínicas generales, CAPS, dentistas, etc.)
+    const noiseKeywords = [
+      'cap ', 'atenció primària', 'atencion primaria', 'centro de salud', 'clínica (osm)', 
+      'clinica (osm)', 'general', 'hospital', 'dental', 'dentista', 'estética', 'estetica',
+      'óptica (osm)', 'optica (osm)', 'farmacia (osm)', 'veterinaria', 'vete',
+      'podólogo', 'podologo', 'fisioterapia', 'psicólogo', 'psicologo',
+      'médico', 'medico', 'especialidades', 'clínica dental', 'clinica dental'
+    ];
 
-      // Whitelist de términos de audiología
-      const isAudiology = comp.tipo === 'audiología' || 
-                          nameLower.includes('audio') || 
-                          nameLower.includes('audífon') || 
-                          nameLower.includes('auditivo') ||
-                          nameLower.includes('auditiu') ||
-                          nameLower.includes('oír') ||
-                          nameLower.includes('oir') ||
-                          nameLower.includes('ear') ||
-                          nameLower.includes('acústic') ||
-                          nameLower.includes('sordera');
+    const hasNoiseKeyword = noiseKeywords.some(keyword => nameLower.includes(keyword));
+
+    // REGLA: Si tiene ruido Y NO es una de las marcas conocidas, descartar.
+    if (hasNoiseKeyword) {
+      const isKnownBrand = nameLower.includes('gaes') || 
+                           nameLower.includes('aural') || 
+                           nameLower.includes('audika') ||
+                           nameLower.includes('audifon') ||
+                           nameLower.includes('audicost') ||
+                           nameLower.includes('afflelou') ||
+                           nameLower.includes('clinisord');
       
-      if (!isAudiology) {
+      if (!isKnownBrand) {
         return null;
       }
     }
+
+    // REGLA: Si NO tiene palabras de audiología, descartar (a menos que sea una marca conocida)
+    if (!isAudiology) {
+       // Mantener si el tipo de OSM es explícitamente audiología
+       if (comp.tipo !== 'audiología' && comp.tipo !== 'audiologia') {
+         return null;
+       }
+    }
+
+    // Clasificar en cadena
+    let chainId = 'Independiente';
+    const nameLowerClean = nameLower.normalize("NFD").replace(/[\u0300-\u036f]/g, ""); // Quitar tildes para mejor match
+
+    if (nameLower.includes('gaes') || nameLower.includes('amplifon')) chainId = 'gaes';
+    else if (nameLower.includes('aural') || nameLower.includes('widex')) chainId = 'aural';
+    else if (nameLower.includes('audika')) chainId = 'audika';
+    else if (nameLower.includes('microson')) chainId = 'microson';
+    else if (nameLower.includes('audicion activa')) chainId = 'audicion_activa';
+    else if (nameLower.includes('cottet')) chainId = 'cottet';
+    else if (nameLower.includes('natural optics')) chainId = 'natural_optics';
+    else if (nameLower.includes('eurosone')) chainId = 'eurosone';
+    else if (nameLower.includes('audias')) chainId = 'audias';
+    else if (nameLower.includes('audiotek')) chainId = 'audiotek';
+    else if (nameLower.includes('audiosalud')) chainId = 'audiosalud';
+    else if (nameLower.includes('aude')) chainId = 'aude';
+    else if (nameLowerClean.includes('jaime de castro')) chainId = 'jaime_castro';
+    else if (nameLower.includes('audifon') || nameLower.includes('audifón')) chainId = 'audifon';
+    else if (nameLower.includes('audical')) chainId = 'audical';
+    else if (nameLower.includes('audicost')) chainId = 'audicost';
+    else if (nameLower.includes('afflelou')) chainId = 'afflelou_acoustics';
+    else if (nameLower.includes('specsavers')) chainId = 'specsavers';
     
-    return { ...comp, cadena: newChain };
+    return { ...comp, cadena: chainId };
   });
   
   return enriched.filter(comp => comp !== null);
