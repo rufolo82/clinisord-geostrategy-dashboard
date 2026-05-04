@@ -112,14 +112,14 @@ export function identifyVulnerableCompetitors(competitorsInArea) {
     const profile = COMPETITOR_PROFILES[comp.cadena];
     if (!profile) return false;
     // Vulnerable si rating bajo Y tiene debilidades de servicio
-    return profile.ratings?.google?.promedio < 4.1;
+    return (profile.ratings?.google?.promedio || 5.0) < 4.1;
   }).map(comp => {
     const profile = COMPETITOR_PROFILES[comp.cadena];
     return {
       ...comp,
       vulnerabilidades: profile.vulnerabilidades || [],
-      rating: profile.ratings?.google?.promedio,
-      ratingRange: `${profile.ratings?.google?.min} – ${profile.ratings?.google?.max}⭐`,
+      rating: profile.ratings?.google?.promedio || 4.0,
+      ratingRange: profile.ratings?.google ? `${profile.ratings.google.min} – ${profile.ratings.google.max}⭐` : 'N/A',
     };
   });
 }
@@ -143,8 +143,8 @@ export function getStealableMarketShare(lat, lng, radiusKm = 3) {
     else if (rating < 4.2) capturable += 0.15;
     else capturable += 0.08;
     // Bonus si no tienen teleaudiología o servicio social
-    if (!profile.servicios.teleaudiologia.disponible) capturable += 0.05;
-    if (!profile.servicios.servicioSocial.disponible) capturable += 0.08;
+    if (!profile.servicios?.teleaudiologia?.disponible) capturable += 0.05;
+    if (!profile.servicios?.servicioSocial?.disponible) capturable += 0.08;
   });
 
   const porcentaje = Math.min(40, Math.round((capturable / total) * 100));
@@ -179,7 +179,7 @@ export function generateStrategicRecommendations(lat, lng, viabilityData) {
   // R2: Zona sin teleaudiología
   const sinTeleaudiologia = competitors.filter(c => {
     const p = COMPETITOR_PROFILES[c.cadena];
-    return p && !p.servicios.teleaudiologia.disponible;
+    return p && p.servicios?.teleaudiologia && !p.servicios.teleaudiologia.disponible;
   });
   if (sinTeleaudiologia.length === competitors.length && competitors.length > 0) {
     recommendations.push({
@@ -195,7 +195,7 @@ export function generateStrategicRecommendations(lat, lng, viabilityData) {
   // R3: Sin servicio social
   const sinServicioSocial = competitors.filter(c => {
     const p = COMPETITOR_PROFILES[c.cadena];
-    return p && !p.servicios.servicioSocial.disponible;
+    return p && p.servicios?.servicioSocial && !p.servicios.servicioSocial.disponible;
   });
   if (sinServicioSocial.length === competitors.length && competitors.length > 0) {
     recommendations.push({

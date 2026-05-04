@@ -568,8 +568,13 @@ export const COMPETITOR_PROFILES_EXTENDED = {
     servicios: {
       audiometria: { disponible: true, precio: 'Gratuita', nota: '' },
       adaptacionAudifonos: { disponible: true, precio: 'Incluida', nota: '' },
+      audifonosInfantiles: { disponible: true, precio: 'Variable', nota: '' },
+      teleaudiologia: { disponible: false, precio: null, nota: '' },
+      seguroAuditivo: { disponible: false, precio: null, nota: '' },
       financiacion: { disponible: true, precio: 'Flexible', nota: '' },
       reparaciones: { disponible: true, precio: 'Servicio propio', nota: 'Rápido' },
+      rehabilitacionAuditiva: { disponible: false, precio: null, nota: '' },
+      servicioSocial: { disponible: false, precio: null, nota: '' },
       seguimientoPersonalizado: { disponible: true, precio: 'Incluido', nota: '' },
     },
     precios: {
@@ -607,7 +612,13 @@ export const COMPETITOR_PROFILES_EXTENDED = {
     servicios: {
       audiometria: { disponible: true, precio: 'Gratuita', nota: '' },
       adaptacionAudifonos: { disponible: true, precio: 'Incluida', nota: '' },
+      audifonosInfantiles: { disponible: true, precio: 'Variable', nota: '' },
+      teleaudiologia: { disponible: false, precio: null, nota: '' },
+      seguroAuditivo: { disponible: true, precio: 'Variable', nota: '' },
       financiacion: { disponible: true, precio: 'Hasta 24 meses', nota: '' },
+      reparaciones: { disponible: true, precio: 'Variable', nota: '' },
+      rehabilitacionAuditiva: { disponible: false, precio: null, nota: '' },
+      servicioSocial: { disponible: false, precio: null, nota: '' },
       seguimientoPersonalizado: { disponible: true, precio: 'Incluido', nota: '' },
     },
     precios: {
@@ -645,7 +656,13 @@ export const COMPETITOR_PROFILES_EXTENDED = {
     servicios: {
       audiometria: { disponible: true, precio: 'Gratuita', nota: '' },
       adaptacionAudifonos: { disponible: true, precio: 'Incluida', nota: 'Alta precisión' },
+      audifonosInfantiles: { disponible: true, precio: 'Premium', nota: '' },
       teleaudiologia: { disponible: true, precio: 'Disponible', nota: '' },
+      seguroAuditivo: { disponible: true, precio: 'Premium', nota: '' },
+      financiacion: { disponible: true, precio: 'Variable', nota: '' },
+      reparaciones: { disponible: true, precio: 'Premium', nota: '' },
+      rehabilitacionAuditiva: { disponible: true, precio: 'Disponible', nota: '' },
+      servicioSocial: { disponible: false, precio: null, nota: '' },
       seguimientoPersonalizado: { disponible: true, precio: 'Excelente', nota: '' },
     },
     precios: {
@@ -683,7 +700,13 @@ export const COMPETITOR_PROFILES_EXTENDED = {
     servicios: {
       audiometria: { disponible: true, precio: 'Gratuita', nota: '' },
       adaptacionAudifonos: { disponible: true, precio: 'Incluida', nota: '' },
+      audifonosInfantiles: { disponible: true, precio: 'Económico', nota: '' },
+      teleaudiologia: { disponible: false, precio: null, nota: '' },
+      seguroAuditivo: { disponible: true, precio: 'Básico', nota: '' },
       financiacion: { disponible: true, precio: 'Muy flexible', nota: '' },
+      reparaciones: { disponible: true, precio: 'Bajo coste', nota: '' },
+      rehabilitacionAuditiva: { disponible: false, precio: null, nota: '' },
+      servicioSocial: { disponible: false, precio: null, nota: '' },
       seguimientoPersonalizado: { disponible: true, precio: 'Básico', nota: '' },
     },
     precios: {
@@ -721,6 +744,13 @@ export const COMPETITOR_PROFILES_EXTENDED = {
     servicios: {
       audiometria: { disponible: true, precio: 'Gratuita', nota: '' },
       adaptacionAudifonos: { disponible: true, precio: 'Incluida', nota: '' },
+      audifonosInfantiles: { disponible: true, precio: 'Variable', nota: '' },
+      teleaudiologia: { disponible: false, precio: null, nota: '' },
+      seguroAuditivo: { disponible: true, precio: 'Variable', nota: '' },
+      financiacion: { disponible: true, precio: 'Disponible', nota: '' },
+      reparaciones: { disponible: true, precio: 'Variable', nota: '' },
+      rehabilitacionAuditiva: { disponible: true, precio: 'Básica', nota: '' },
+      servicioSocial: { disponible: false, precio: null, nota: '' },
       seguimientoPersonalizado: { disponible: true, precio: 'Excelente', nota: '' },
     },
     precios: {
@@ -758,6 +788,13 @@ export const COMPETITOR_PROFILES_EXTENDED = {
     servicios: {
       audiometria: { disponible: true, precio: 'Gratuita', nota: '' },
       adaptacionAudifonos: { disponible: true, precio: 'Incluida', nota: '' },
+      audifonosInfantiles: { disponible: true, precio: 'Variable', nota: '' },
+      teleaudiologia: { disponible: true, precio: 'Disponible', nota: '' },
+      seguroAuditivo: { disponible: true, precio: 'Variable', nota: '' },
+      financiacion: { disponible: true, precio: 'Disponible', nota: '' },
+      reparaciones: { disponible: true, precio: 'Variable', nota: '' },
+      rehabilitacionAuditiva: { disponible: true, precio: 'Media', nota: '' },
+      servicioSocial: { disponible: false, precio: null, nota: '' },
       seguimientoPersonalizado: { disponible: true, precio: 'Bueno', nota: '' },
     },
     precios: {
