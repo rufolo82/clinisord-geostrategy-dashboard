@@ -870,9 +870,9 @@ const Map = ({
             
             {/* Marcadores de competidores */}
             {layers?.showCompetitors && competitors?.map((competitor) => {
-              // Si no tiene cadena (ej. de Google Maps), intentar identificarla
+              // Si no tiene cadena o es Independiente, intentar identificarla por el nombre
               let chainId = competitor.cadena;
-              if (!chainId && competitor.nombre) {
+              if ((!chainId || chainId === 'Independiente') && competitor.nombre) {
                 const nameLower = competitor.nombre.toLowerCase();
                 if (nameLower.includes('gaes') || nameLower.includes('amplifon')) chainId = 'gaes';
                 else if (nameLower.includes('aural') || nameLower.includes('widex')) chainId = 'aural';
@@ -882,10 +882,18 @@ const Map = ({
                 else if (nameLower.includes('audicost')) chainId = 'audicost';
                 else if (nameLower.includes('afflelou')) chainId = 'afflelou_acoustics';
                 else if (nameLower.includes('specsavers')) chainId = 'specsavers';
-                else if (nameLower.includes('eurosone')) chainId = 'eurosone';
+                else if (nameLower.includes('eurosone') || nameLower.includes('euro-sone')) chainId = 'eurosone';
                 else if (nameLower.includes('audias')) chainId = 'audias';
-                else if (nameLower.includes('audiotek')) chainId = 'audiotek';
+                else if (nameLower.includes('audiotek') || nameLower.includes('audiotec')) chainId = 'audiotek';
+                else if (nameLower.includes('multiopticas') || nameLower.includes('multiópticas')) chainId = 'multiopticas';
+                else if (nameLower.includes('opticalia')) chainId = 'opticalia';
+                else if (nameLower.includes('federopticos') || nameLower.includes('federópticos')) chainId = 'federopticos';
+                else if (nameLower.includes('general optica') || nameLower.includes('general óptica')) chainId = 'general_optica';
+                else if (nameLower.includes('el corte ingles') || nameLower.includes('el corte inglés')) chainId = 'elcorteingles';
               }
+
+              // Normalizar chainId si viene como 'Independiente' (capitalizado)
+              if (chainId === 'Independiente') chainId = 'independiente';
 
               const hasLogo = chainId && getLogoPath(chainId) && !needsPlaceholder(chainId);
               const chainColor = chainId ? getChainColor(chainId) : '#ef4444';
