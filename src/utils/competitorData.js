@@ -8,6 +8,7 @@ export const competitorChains = [
   { id: 'aural', name: 'Aural (Widex)', type: 'clínica', color: '#6366f1', count: 0, description: 'Especialistas en acúfenos' },
   { id: 'microson', name: 'Microson', type: 'clínica', color: '#f43f5e', count: 0, description: 'Histórica del sector español' },
   { id: 'audicion_activa', name: 'Audición Activa', type: 'clínica', color: '#10b981', count: 0, description: 'Presencia nacional' },
+  { id: 'audicost', name: 'Audicost', type: 'clínica', color: '#f97316', count: 0, description: 'Líder en precios low-cost' },
   
   // Regionales
   { id: 'cottet', name: 'Cottet 1902', type: 'óptica', color: '#b45309', count: 0, description: 'Premium - Cataluña' },

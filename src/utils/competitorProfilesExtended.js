@@ -8,7 +8,7 @@ export const COMPETITOR_PROFILES_EXTENDED = {
     presenciaEspana: '~500 centros',
     cuotaMercadoEstimada: 35,
     color: '#ef4444',
-    logo: 'https://www.amplifon.com/documents/20124/0/logo-amplifon.svg',
+    logo: '/logos/logo-gaes.png',
     descripcion: 'Líder del mercado español de audiología. Filial de Amplifon, mayor grupo mundial de audiología. Modelo centrado en volumen y precio competitivo, con fuerte presencia en centros comerciales.',
     estrategiaOperativa: 'Modelo retail masivo. Alta inversión en publicidad en TV (horarios matinales). Estrategia muy proactiva de llamadas comerciales y seguimiento de base de datos para renovaciones de audífonos cada 4-5 años.',
     metricasNegocio: { ratioPacientesAnual: 180, facturacionMedia: '350.000€', ticketMedio: '1.950€' },
@@ -687,7 +687,7 @@ export const COMPETITOR_PROFILES_EXTENDED = {
   eurosone: {
     id: 'eurosone',
     nombre: 'Eurosone',
-    logo: 'https://www.euro-sone.com/wp-content/uploads/2022/11/logo-eurosone.png',
+    logo: '/logos/logo-eurosone.png',
     tipo: 'Cadena Regional',
     propietario: 'Capital Nacional',
     añoFundacion: 2010,
@@ -732,7 +732,7 @@ export const COMPETITOR_PROFILES_EXTENDED = {
   audias: {
     id: 'audias',
     nombre: 'Audias Centro Auditivo',
-    logo: 'https://www.audias.es/wp-content/uploads/2025/09/Logo-rectangular-audias-20PP.png',
+    logo: '/logos/logo-audias.png',
     tipo: 'Cadena Independiente',
     propietario: 'Independiente',
     añoFundacion: 2012,
@@ -777,7 +777,7 @@ export const COMPETITOR_PROFILES_EXTENDED = {
   audiotek: {
     id: 'audiotek',
     nombre: 'Audiotek',
-    logo: 'https://audiotek.es/wp-content/uploads/2025/05/Logo-Audiotec-color.png',
+    logo: '/logos/logo-audiotek.png',
     tipo: 'Cadena Regional',
     propietario: 'Capital Nacional',
     añoFundacion: 2008,
@@ -817,6 +817,51 @@ export const COMPETITOR_PROFILES_EXTENDED = {
       { tipo: 'servicio', titulo: 'Oportunidad social', descripcion: 'Su enfoque es puramente clínico-tecnológico', oportunidadClinosord: 'A diferencia de Audiotek, Clinisord ofrece una dimensión social única.' }
     ],
     ratings: { google: { min: 4.1, max: 4.6, promedio: 4.4 }, fuente: 'Estimación' },
+  },
+
+  audicost: {
+    id: 'audicost',
+    nombre: 'Audicost',
+    logo: '/logos/logo-audicost.svg',
+    tipo: 'Cadena Discount/Low-cost',
+    propietario: 'Capital Nacional',
+    añoFundacion: 2013,
+    presenciaEspana: '~40 centros',
+    cuotaMercadoEstimada: 2,
+    color: '#f97316',
+    descripcion: 'Cadena enfocada en ofrecer precios muy competitivos y promociones agresivas. Su modelo se basa en la democratización del audífono.',
+    estrategiaOperativa: 'Marketing directo centrado en el ahorro. Ubicaciones en calles comerciales de segundo orden para optimizar costes.',
+    metricasNegocio: { ratioPacientesAnual: 100, facturacionMedia: '180.000€', ticketMedio: '1.400€' },
+    analisisSentimiento: {
+      quejasComunes: ['Tiempos de espera'],
+      elogiosComunes: ['Mejor precio del mercado', 'Facilidades de pago']
+    },
+    servicios: {
+      audiometria: { disponible: true, precio: 'Gratuita', nota: '' },
+      adaptacionAudifonos: { disponible: true, precio: 'Incluida', nota: '' },
+      audifonosInfantiles: { disponible: true, precio: 'Básica', nota: '' },
+      teleaudiologia: { disponible: false, precio: null, nota: '' },
+      seguroAuditivo: { disponible: true, precio: 'Disponible', nota: '' },
+      financiacion: { disponible: true, precio: 'Muy flexible', nota: '' },
+      reparaciones: { disponible: true, precio: 'Variable', nota: '' },
+      rehabilitacionAuditiva: { disponible: false, precio: null, nota: '' },
+      servicioSocial: { disponible: false, precio: null, nota: '' },
+      seguimientoPersonalizado: { disponible: true, precio: 'Estándar', nota: '' },
+    },
+    precios: {
+      audiometria: { min: 0, max: 0, display: 'Gratuita' },
+      audifonos: {
+        gama_basica: { min: 600, max: 1200, display: '600€ – 1.200€', marcas: ['Varios'] },
+        gama_media: { min: 1200, max: 2500, display: '1.200€ – 2.500€', marcas: ['Varios'] },
+        gama_alta: { min: 2500, max: 4500, display: '2.500€ – 4.500€', marcas: ['Varios'] },
+      },
+    },
+    puntosFuertes: ['Liderazgo en precio', 'Claridad en la oferta comercial'],
+    puntosDebiles: ['Percepción de calidad menor por el enfoque low-cost', 'Menos servicios clínicos avanzados'],
+    vulnerabilidades: [
+      { tipo: 'servicio', titulo: 'Diferenciación social', descripcion: 'Su foco es el precio puro', oportunidadClinosord: 'Clinisord puede competir en precio social pero con un acompañamiento que Audicost no ofrece.' }
+    ],
+    ratings: { google: { min: 3.8, max: 4.4, promedio: 4.1 }, fuente: 'Estimación' },
   },
 
   natural_optics: {

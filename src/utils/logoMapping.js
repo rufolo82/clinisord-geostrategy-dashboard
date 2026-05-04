@@ -10,7 +10,7 @@ export const logos = {
   
   // Competidores
   gaes: {
-    path: 'https://www.amplifon.com/documents/20124/0/logo-amplifon.svg',
+    path: '/logos/logo-gaes.png',
     alt: 'GAES (Amplifon)'
   },
   aural: {
@@ -51,15 +51,15 @@ export const logos = {
     alt: 'Audición Activa'
   },
   eurosone: {
-    path: 'https://www.euro-sone.com/wp-content/uploads/2022/11/logo-eurosone.png',
+    path: '/logos/logo-eurosone.png',
     alt: 'Eurosone'
   },
   audias: {
-    path: 'https://www.audias.es/wp-content/uploads/2025/09/Logo-rectangular-audias-20PP.png',
+    path: '/logos/logo-audias.png',
     alt: 'Audias'
   },
   audiotek: {
-    path: 'https://audiotek.es/wp-content/uploads/2025/05/Logo-Audiotec-color.png',
+    path: '/logos/logo-audiotek.png',
     alt: 'Audiotek'
   },
   audifon: {
@@ -87,7 +87,7 @@ export const logos = {
     alt: 'Specsavers'
   },
   audicost: {
-    path: 'https://audicostcentrosauditivos.com/wp-content/uploads/2021/05/logo-audicost.png',
+    path: '/logos/logo-audicost.svg',
     alt: 'Audicost'
   },
   oidox: {
