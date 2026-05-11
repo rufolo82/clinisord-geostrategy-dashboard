@@ -1,5 +1,5 @@
 // Mapeo de logos para la aplicación
-// Los logos se almacenan en /public/logos/
+// Todos los logos están almacenados localmente en /public/logos/ para máxima fiabilidad
 
 export const logos = {
   // Marca principal
@@ -7,64 +7,39 @@ export const logos = {
     path: '/logos/logo-centro-social.png',
     alt: 'Centro Social del Audífono'
   },
-  
-  // Competidores
+
+  // --- CADENAS DE AUDÍFONOS ---
   gaes: {
     path: '/logos/logo-gaes.png',
     alt: 'GAES (Amplifon)'
   },
   aural: {
-    path: 'https://www.auralcentrosauditivos.es/wp-content/themes/aural/assets/img/logo-aural.svg',
-    alt: 'Aural'
+    path: '/logos/logo-aural.jpg',
+    alt: 'Aural Centros Auditivos'
   },
   audika: {
-    path: 'https://www.audika.es/Content/img/logo-audika.svg',
+    path: '/logos/logo-audika.svg',
     alt: 'Audika'
   },
-  afflelou_acoustics: {
-    path: 'https://www.afflelou.es/Content/img/logo-afflelou.svg',
-    alt: 'Alain Afflelou'
-  },
-  multiopticas: {
-    path: '/logos/logo-multiopticas.png',
-    alt: 'Multiópticas'
-  },
-  opticalia: {
-    path: '/logos/logo-opticalia.svg',
-    alt: 'Opticalia',
-    placeholder: true // Logo no disponible, usar inicial
-  },
-  federopticos: {
-    path: '/logos/logo-federopticos.jpg',
-    alt: 'Federópticos'
-  },
-  general_optica: {
-    path: 'https://www.generaloptica.es/content/images/logo_go.png',
-    alt: 'General Óptica'
-  },
-  elcorteingles: {
-    path: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/El_Corte_Ingl%C3%A9s_logo.svg/1200px-El_Corte_Ingl%C3%A9s_logo.svg.png',
-    alt: 'El Corte Inglés'
-  },
-  vistaoptica: {
-    path: 'https://www.vistaoptica.es/wp-content/uploads/2021/04/logo-vistaoptica.png',
-    alt: 'Vistaóptica'
-  },
-  mainat: {
-    path: 'https://www.mainat.com/wp-content/uploads/2023/11/logo-mainat.png',
-    alt: 'Mainat'
-  },
-  natural_optics: {
-    path: 'https://naturalopticsgroup.com/wp-content/uploads/2022/10/logo_nog.png',
-    alt: 'Natural Optics Group'
-  },
   microson: {
-    path: 'https://www.microson.es/Img/Logo2.PNG',
+    path: '/logos/logo-microson.png',
     alt: 'Microson'
   },
   audicion_activa: {
-    path: 'https://audicionactiva.com/wp-content/uploads/2023/10/logo-audicion-activa.png',
+    path: '/logos/logo-audicion-activa.webp',
     alt: 'Audición Activa'
+  },
+  audifon: {
+    path: '/logos/logo-audifon.svg',
+    alt: 'Audifon'
+  },
+  audical: {
+    path: '/logos/logo-audical.png',
+    alt: 'Audical'
+  },
+  audionova: {
+    path: '/logos/logo-audionova.jpg',
+    alt: 'AudioNova'
   },
   eurosone: {
     path: '/logos/logo-eurosone.png',
@@ -78,38 +53,64 @@ export const logos = {
     path: '/logos/logo-audiotek.png',
     alt: 'Audiotek'
   },
-  audifon: {
-    path: 'https://centrosauditivos.es/wp-content/uploads/2018/11/audifon-logo.png',
-    alt: 'Audifon'
-  },
-  audical: {
-    path: 'https://www.audical.com.uy/content/dam/latam/icons/brand-logo/red-logos/audical-logo-header.png/jcr:content/renditions/cq5dam.web.1280.1280.png',
-    alt: 'Audical'
-  },
   belio: {
     path: '/logos/logo-belio.png',
     alt: 'Belio Audición'
-  },
-  cottet: {
-    path: 'https://www.cottet.com/skin/frontend/cottet/default/images/logo.png',
-    alt: 'Cottet Audio'
-  },
-  audionova: {
-    path: '/logos/logo-audionova.jpg',
-    alt: 'AudioNova'
-  },
-  specsavers: {
-    path: 'https://www.specsavers.es/sites/default/files/logo.png',
-    alt: 'Specsavers'
   },
   audicost: {
     path: '/logos/logo-audicost.svg',
     alt: 'Audicost'
   },
+  specsavers: {
+    path: '/logos/logo-specsavers.svg',
+    alt: 'Specsavers'
+  },
   oidox: {
     path: null,
     alt: 'Centro Auditivo Oidox',
     placeholder: true
+  },
+
+  // --- CADENAS DE ÓPTICA CON SERVICIO AUDITIVO ---
+  afflelou_acoustics: {
+    path: '/logos/logo-afflelou.svg',
+    alt: 'Alain Afflelou Acoustics'
+  },
+  multiopticas: {
+    path: '/logos/logo-multiopticas.png',
+    alt: 'Multiópticas'
+  },
+  opticalia: {
+    path: '/logos/logo-opticalia.svg',
+    alt: 'Opticalia'
+  },
+  federopticos: {
+    path: '/logos/logo-federopticos.jpg',
+    alt: 'Federópticos'
+  },
+  general_optica: {
+    path: '/logos/logo-general-optica.png',
+    alt: 'General Óptica'
+  },
+  elcorteingles: {
+    path: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/El_Corte_Ingl%C3%A9s_logo.svg/1200px-El_Corte_Ingl%C3%A9s_logo.svg.png',
+    alt: 'El Corte Inglés'
+  },
+  vistaoptica: {
+    path: '/logos/logo-vistaoptica.svg',
+    alt: 'Vistaóptica'
+  },
+  mainat: {
+    path: '/logos/logo-mainat.png',
+    alt: 'Mainat'
+  },
+  natural_optics: {
+    path: '/logos/logo-naturaloptics.png',
+    alt: 'Natural Optics Group'
+  },
+  cottet: {
+    path: '/logos/logo-cottet.jpg',
+    alt: 'Cottet Audio'
   }
 };
 

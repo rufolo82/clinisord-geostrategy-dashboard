@@ -540,8 +540,8 @@ const Map = ({
       
       // Definir bounding boxes para cada ciudad
       const cityBounds = {
-        madrid: { minLat: 40.3, maxLat: 40.55, minLng: -3.9, maxLng: -3.5 },
-        barcelona: { minLat: 41.3, maxLat: 41.5, minLng: 2.0, maxLng: 2.3 },
+        madrid: { minLat: 40.2, maxLat: 40.6, minLng: -4.0, maxLng: -3.3 },
+        barcelona: { minLat: 41.2, maxLat: 41.7, minLng: 1.8, maxLng: 2.5 },
         valencia: { minLat: 39.4, maxLat: 39.5, minLng: -0.4, maxLng: -0.3 },
         sevilla: { minLat: 37.35, maxLat: 37.45, minLng: -6.0, maxLng: -5.9 }
       };
@@ -787,7 +787,7 @@ const Map = ({
               </Popup>
             </Marker>
           );
-        })};
+        })}
         
         {/* Marcador de ubicación seleccionada */}
         {selectedLocation && (
@@ -944,7 +944,9 @@ const Map = ({
                   </div>
                 </Popup>
               </Marker>
-            ))}
+            );
+          })}
+
           </>
         )}
       </MapContainer>

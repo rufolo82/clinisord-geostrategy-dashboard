@@ -13,6 +13,7 @@ import {
   identifyVulnerableCompetitors,
   getDAFOAnalysis,
 } from '../utils/competitorIntelligence';
+import { getLogoPath } from '../utils/logoMapping';
 import { getCompetitorsInArea, calculateDistance } from '../utils/competitorData';
 import { clinisordLocations } from '../utils/spainData';
 import ViabilityTransparencyModal from './ViabilityTransparencyModal';
@@ -157,8 +158,8 @@ function CuotaPanel({ selectedLocation }) {
               {i + 1}
             </span>
             <div className="flex-1 min-w-0 flex items-center gap-2">
-              {d.logo && (
-                <img src={d.logo} alt="" className="w-5 h-5 object-contain flex-shrink-0" />
+              {getLogoPath(d.chainId) && (
+                <img src={getLogoPath(d.chainId)} alt="" className="w-5 h-5 object-contain flex-shrink-0" />
               )}
               <div className="flex-1 min-w-0">
                 <p className="text-sm font-medium text-slate-700 truncate">{d.nombre}</p>
@@ -227,8 +228,8 @@ function FichasPanel() {
               className="w-full flex items-center gap-3 p-3 hover:bg-slate-50 transition-colors text-left"
             >
               <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-white border border-slate-200 overflow-hidden flex-shrink-0 p-1">
-                {profile.logo ? (
-                  <img src={profile.logo} alt="" className="w-full h-full object-contain" />
+                {getLogoPath(profile.id) ? (
+                  <img src={getLogoPath(profile.id)} alt="" className="w-full h-full object-contain" />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center text-xs font-bold text-white rounded" style={{ backgroundColor: profile.color }}>
                     {profile.nombre.charAt(0)}

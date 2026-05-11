@@ -178,9 +178,9 @@ const Dashboard = () => {
         
         // Definir bounding boxes aproximadas para cada ciudad
         if (city === 'madrid') {
-          return compLat >= 40.3 && compLat <= 40.55 && compLng >= -3.9 && compLng <= -3.5;
+          return compLat >= 40.2 && compLat <= 40.6 && compLng >= -4.0 && compLng <= -3.3;
         } else if (city === 'barcelona') {
-          return compLat >= 41.25 && compLat <= 41.65 && compLng >= 1.9 && compLng <= 2.3;
+          return compLat >= 41.2 && compLat <= 41.7 && compLng >= 1.8 && compLng <= 2.5;
         } else if (city === 'valencia') {
           return compLat >= 39.4 && compLat <= 39.5 && compLng >= -0.4 && compLng <= -0.3;
         } else if (city === 'sevilla') {

@@ -21,6 +21,7 @@ export const competitorChains = [
   { id: 'audiosalud', name: 'Audiosalud', type: 'clínica', color: '#059669', count: 0, description: 'Destacada en Andalucía' },
   { id: 'aude', name: 'Aude', type: 'clínica', color: '#dc2626', count: 0, description: 'Referente en Andalucía' },
   { id: 'jaime_castro', name: 'Jaime de Castro', type: 'clínica', color: '#d97706', count: 0, description: 'Comunidad Valenciana' },
+  { id: 'audical', name: 'Audical', type: 'clínica', color: '#8b5cf6', count: 0, description: 'Centros auditivos especializados' },
   
   // Independientes
   { id: 'Independiente', name: 'Centro Independiente', type: 'clínica', color: '#8b5cf6', count: 0, description: 'Comercio local' }
@@ -89,7 +90,7 @@ function enrichCompetitors(competitors) {
     }
 
     // Clasificar en cadena
-    let chainId = 'Independiente';
+    let chainId = comp.cadena ? comp.cadena.toLowerCase() : 'Independiente';
     const nameLowerClean = nameLower.normalize("NFD").replace(/[\u0300-\u036f]/g, ""); // Quitar tildes para mejor match
 
     if (nameLower.includes('gaes') || nameLower.includes('amplifon')) chainId = 'gaes';
