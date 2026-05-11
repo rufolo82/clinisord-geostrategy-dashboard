@@ -904,7 +904,7 @@ const Map = ({
                   position={[competitor.lat, competitor.lng]}
                   icon={hasLogo 
                     ? createLogoIcon(chainId, 36, hoveredMarker === `competitor-${competitor.id}`)
-                    : createIcon(competitor.tipo === 'clínica' ? 'competitor' : 
+                    : createIcon((competitor.tipo === 'clínica' || competitor.tipo === 'audiología' || competitor.tipo === 'competitor') ? 'competitor' : 
                                  competitor.tipo === 'óptica' ? 'optica' : 'farmacia', 28, hoveredMarker === `competitor-${competitor.id}`)
                   }
                   eventHandlers={{

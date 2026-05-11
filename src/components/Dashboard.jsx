@@ -11,6 +11,10 @@ import { competitorChains, competitorLocations } from '../utils/competitorDataCo
 import { Info } from 'lucide-react';
 
 const Dashboard = () => {
+  useEffect(() => {
+    console.log('[Dashboard] Versión desplegada: 11/05/2026 18:10 (Fix Logos y Áreas)');
+  }, []);
+
   // Estados principales
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [viabilityData, setViabilityData] = useState(null);
